@@ -1,0 +1,8 @@
+<div class="col-md-6 col-md-offset-3">
+    <a href="/">Назад</a>
+
+    <div class="well" *ngFor="let contract of contracts">
+        <h2>{{ contract.title }}</h2>
+        <p>{{ contract.description }}</p>
+    </div>
+</div>

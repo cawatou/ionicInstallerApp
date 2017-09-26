@@ -1,0 +1,9 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Здравствуйте {{ user.first_name }} {{ user.middle_name }} {{ user.second_name }}</h2>
+    <ul class="nav nav-pills nav-stacked">
+        <li><a href="/contracts">Договоры</a></li>
+        <li><a href="/scheduler">Планировщик</a></li>
+        <li><a href="/knowledge">Знания</a></li>
+        <li><a [routerLink]="['/login']">Выйти</a></li>
+    </ul>
+</div>

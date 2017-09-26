@@ -1,0 +1,13 @@
+<div class="col-md-6 col-md-offset-3">
+    <a href="/">Назад</a>
+    <div class="well">
+        <ul class="nav nav-pills nav-stacked">
+            <li *ngFor="let knowledge of knowledges">
+                <a href="knowledge/{{ knowledge.id }}">
+                    <p>{{ knowledge.title }}</p>
+                    <p>{{ knowledge.description }}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
