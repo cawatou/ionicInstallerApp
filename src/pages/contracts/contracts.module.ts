@@ -9,7 +9,7 @@ import { ContractsPage } from './contracts';
     ContractsPage,
   ],
   imports: [
-    IonicPageModule.forChild(ContractsPage),
+    IonicPageModule.forChild(ContractsPage  ),
     TranslateModule.forChild()
   ],
   exports: [
