@@ -1,18 +1,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ item.name }}</ion-title>
+    <ion-title>{{ item.Address }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
-  </div>
-
   <div class="item-detail" padding>
-    <h2>{{item.name}}</h2>
-    <p>{{item.about}}</p>
+    <h2>{{item.ID}}</h2>
+    <p>Дата: {{item.Date}}</p>
+    <p>Адрес: {{item.Address}}</p>
+    <p>Комментарий: {{item.Comments}}</p>
+    <p>Житель: {{item.Resident}}</p>
+    <p>Диспетчер: {{item.Dispatcher}}</p>
   </div>
 </ion-content>

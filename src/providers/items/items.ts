@@ -8,13 +8,13 @@ import { Api } from '../api/api';
 
 @Injectable()
 export class Items {
+  items: Item[] = [];
 
   constructor(public http: Http, public api: Api) {
   }
 
   query(params?: any) {
-    return this.api.get('/items', params)
-      .map(resp => resp.json());
+    return this.api.get('', params);
   }
 
   add(item: Item) {
