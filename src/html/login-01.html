@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href='css/style.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="js/fancybox/dist/jquery.fancybox.min.css" /> </head>
+
+<body class="login-01">
+    <div class="logo"> <img class="logo-img" src="img/logo-img.png"> <img class="logo-text" src="img/logo-text.png"> </div>
+    <div class="form w">
+        <form>
+            <div class="field-login">
+                <input type="text" name="login" placeholder="Введите логин" value=""> </div>
+            <div class="field-password">
+                <input type="text" name="password" placeholder="Введите пароль" value=""> </div>
+            <button class="button" data-fancybox data-src="#pop1" href="javascript:;">Начать работу</button>
+        </form>
+    </div>
+    <div style="display: none;" class="popup pop1" id="pop1">
+        <div class="title">Невозможно соедениться с сервером</div>
+        <div class="text">
+            <p>Проверьте подключение к сети интернет и повторите попытку</p>
+        </div>
+        <div class="buttons">
+            <button data-fancybox-close="" class="button close" title="Close">Закрыть</button>
+            <button class="button">Повторить</button>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/fancybox/dist/jquery.fancybox.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

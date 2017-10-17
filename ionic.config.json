@@ -2,11 +2,7 @@
   "name": "ionic_super",
   "app_id": "",
   "type": "ionic-angular",
-  "integrations": {},
-  "proxies": [
-    {
-      "path": "^/list-master",
-      "proxyUrl": "http://192.168.88.55:84"
-    }
-  ]
+  "integrations": {
+    "cordova": {}
+  }
 }
