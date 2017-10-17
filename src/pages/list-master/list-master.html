@@ -1,36 +1,45 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>{{ 'Список заявок' }}</ion-title>
-
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addItem()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-
-</ion-header>
-
-<ion-content>
-
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
-      <button ion-item (click)="openItem(item)">
-        <h2>id: {{item.ID}}</h2>
-        <p>Дата: {{item.Date}}</p>
-        <p>Адрес: {{item.Address}}</p>
-        <p>Комментарий: {{item.Comments}}</p>
-        <p>Житель: {{item.Resident}}</p>
-        <p>Диспетчер: {{item.Dispatcher}}</p>
-        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-      </button>
-
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">
-          {{ 'DELETE_BUTTON' | translate }}
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-</ion-content>
+<div class="header">
+    <div>Актуальные заявки</div>
+</div>
+<div class="anm-time w"><a class="button active" href="#">сегодня</a> <a class="button" href="#">завтра</a> <a
+        class="button" href="#">неделя</a></div>
+<div class="messages w">
+    <div class="no">
+        <div class="mm">Нет сообщений</div>
+    </div>
+</div>
+<div class="anm w"  >
+    <div class="item item1" *ngFor="let item of currentItems" ion-item (click)="openItem(item)">
+        <div class="left">
+            <div class="t1">{{ item.Malfunctions }}</div>
+            <div class="t2">{{ item.Address }}</div>
+            <div class="t3"><i class="alarm"></i>
+                <div><b>{{ item.DateSMS }}</b> до рекомендуемого срока</div>
+            </div>
+            <div class="icons">
+                <div class="icon i1"></div>
+                <div class="icon i2"></div>
+                <div class="icon i3"></div>
+                <div class="icon i4"></div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="number">№ {{ item.ID }}</div>
+            <div class="icon i1"></div>
+        </div>
+    </div>
+</div>
+<footer class="footer w">
+    <div class="item">
+        <div class="icon i1"></div>
+        <div class="text">Профиль</div>
+    </div>
+    <div class="item">
+        <div class="icon i2"></div>
+        <div class="text">Карта</div>
+    </div>
+    <div class="item">
+        <div class="icon i3"></div>
+        <div class="text">Teledom</div>
+    </div>
+</footer>
