@@ -14,14 +14,14 @@
 <div class="aa2 w">
   <div>
     <p>Рекомендуемое время исполнения</p>
-    <p>12:30</p>
+    <p>{{ item.RecommendDate }}</p>
   </div>
   <div>
     <p>Крайний срок исполнения</p>
-    <p>13:30</p>
+    <p>{{ item.Deadline }}</p>
   </div>
 </div>
-<div class="aa3 w"> 02:15:15 до рекомендуемого срока </div>
+<div class="aa3 w"> {{ item.RecommendDate }} до рекомендуемого срока </div>
 <div class="aa4 w">
   <p>{{ item.Comments }}</p>
 </div>

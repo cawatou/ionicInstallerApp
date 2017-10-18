@@ -5,10 +5,10 @@ import { Items } from '../../providers/providers';
 
 @IonicPage()
 @Component({
-  selector: 'page-item-detail',
-  templateUrl: 'item-detail.html'
+  selector: 'page-order-detail',
+  templateUrl: 'order-detail.html'
 })
-export class ItemDetailPage {
+export class OrderDetailPage {
   item: any;
 
   constructor(public navCtrl: NavController, navParams: NavParams, items: Items) {

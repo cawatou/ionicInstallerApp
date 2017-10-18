@@ -2,37 +2,24 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
-//import { Items } from '../../providers/providers';
-import { Items } from '../../providers/items/items';
+import { Items } from '../../providers/providers';
 
 @IonicPage()
 @Component({
-  selector: 'page-list-master',
+  selector: 'page-order-list',
   templateUrl: 'order-list.html'
 })
 export class OrderListPage {
   currentItems: Item[];
-  //currentItems: any;
-  //tempItems: any;
-
 
   constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
     this.items.query()
-        .subscribe(currentItems => this.currentItems = currentItems.json());
-
-    //this.currentItems = this.items.query();
+        .subscribe(data => this.currentItems = data.json());
   }
 
-  /**
-   * The view loaded, let's query our items for the list
-   */
   ionViewDidLoad() {
   }
 
-  /**
-   * Prompt the user to add a new item. This shows our ItemCreatePage in a
-   * modal and then adds the new item to our data source if the user created one.
-   */
   addItem() {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
@@ -43,18 +30,12 @@ export class OrderListPage {
     addModal.present();
   }
 
-  /**
-   * Delete an item from the list of items.
-   */
   deleteItem(item) {
     this.items.delete(item);
   }
 
-  /**
-   * Navigate to the detail page for this item.
-   */
   openItem(item: Item) {
-    this.navCtrl.push('ItemDetailPage', {
+    this.navCtrl.push('OrderDetailPage', {
       item: item
     });
   }
