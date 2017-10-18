@@ -6,10 +6,10 @@ import {Item} from '../../models/item';
 
 @IonicPage()
 @Component({
-    selector: 'page-order-detail',
-    templateUrl: 'order-detail.html'
+    selector: 'page-order-map',
+    templateUrl: 'order-map.html'
 })
-export class OrderDetailPage {
+export class OrderMapPage {
     item:any;
 
     constructor(public navCtrl:NavController, navParams:NavParams, items:Items) {
@@ -17,17 +17,8 @@ export class OrderDetailPage {
         this.item = navParams.get('item');
     }
 
-    ionViewDidLoad() {
-    }
-
-    openOrderList(item:Item) {
-        this.navCtrl.push('OrderListPage', {
-            item: item
-        });
-    }
-
-    openOrderMap(item:Item) {
-        this.navCtrl.push('OrderMapPage', {
+    openOrderDetail(item:Item) {
+        this.navCtrl.push('OrderDetailPage', {
             item: item
         });
     }
