@@ -6,20 +6,29 @@ import {Item}                                   from '../../models/item';
 
 @IonicPage()
 @Component({
-    selector: 'page-order-map',
-    templateUrl: 'order-map.html'
+    selector: 'page-main',
+    templateUrl: 'main.html'
 })
-export class OrderMapPage {
+export class MainPage {
     item:any;
 
     constructor(public navCtrl:NavController, navParams:NavParams, items:Items) {
-        //this.item = navParams.get('item') || items.defaultItem;
-        this.item = navParams.get('item');
+         //this.item = navParams.get('item');
     }
 
-    openOrderDetail(item:Item) {
-        this.navCtrl.push('OrderDetailPage', {
-            item: item
-        });
+    openContract() {
+        this.navCtrl.push('ContractPage');
+    }
+
+    openKnowledge() {
+        this.navCtrl.push('KnowledgePage');
+    }
+
+    openOffer() {
+        this.navCtrl.push('OfferPage');
+    }
+
+    openScheduler() {
+        this.navCtrl.push('SchedulerPage');
     }
 }

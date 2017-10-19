@@ -16,5 +16,5 @@ import {OrderMapPage} from './order-map';
         OrderMapPage
     ]
 })
-export class ItemDetailPageModule {
+export class OrderMapPageModule {
 }
