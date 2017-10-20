@@ -14,11 +14,13 @@ export class OrderMapPage {
     constructor(public navCtrl:NavController, navParams:NavParams) {
         //this.item = navParams.get('item') || items.defaultItem;
         this.item = navParams.get('item');
+        this.item = navParams.get('user');
     }
 
-    openOrderDetail(item:Item) {
+    openOrderDetail(item:Item, user) {
         this.navCtrl.push('OrderDetailPage', {
-            item: item
+            item: item,
+            user: user
         });
     }
 }
