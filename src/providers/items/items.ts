@@ -14,7 +14,7 @@ export class Items {
   }
 
   query(params?: any) {
-    return this.api.get('', params);
+    return this.api.get('/requests', params);
   }
 
   add(item: Item) {

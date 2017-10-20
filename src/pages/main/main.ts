@@ -3,7 +3,7 @@ import {IonicPage, NavController, NavParams}    from 'ionic-angular';
 
 import {Items}                                  from '../../providers/providers';
 import {Item}                                   from '../../models/item';
-
+ 
 @IonicPage()
 @Component({
     selector: 'page-main',
@@ -30,5 +30,9 @@ export class MainPage {
 
     openScheduler() {
         this.navCtrl.push('SchedulerPage');
+    }
+
+    openOrderList() {
+        this.navCtrl.push('OrderListPage');
     }
 }
