@@ -1,12 +1,13 @@
 import {Component}                                  from '@angular/core';
-import {IonicPage, ModalController, NavController}  from 'ionic-angular';
+import {IonicPage, NavController, NavParams}        from 'ionic-angular';
 
 import {Item}                                       from '../../models/item';
-import {Items}                                      from '../../providers/providers';
+import {Api}                                        from '../../providers/api/api';
 
 /**
  * params = [
- *      'fulfilled', // 1 - all , 0 - unfulfilled
+ *      'method',           // request type
+ *      'fulfilled',        // 1 - all , 0 - unfulfilled
  *      'master_name',
  *      'page_number',
  *      'on_page'
@@ -21,19 +22,25 @@ import {Items}                                      from '../../providers/provid
 export class OrderListPage {
     currentItems:Item[];
     params: any;
+    user: any;
 
-    constructor(public navCtrl:NavController, public items:Items, public modalCtrl:ModalController) {
-        this.params = ['0', 'Фрид%20Александр', '1', '3'];
-        this.items.query(this.params)
+    constructor(public navCtrl:NavController,
+                public api:Api,
+                public navParams:NavParams) {
+
+        this.user = navParams.get('user');
+        this.params = ['requests', '0', this.user.Master, '1', '3'];
+        this.api.get(this.params)
             .subscribe(data => this.currentItems = data.json());
     }
 
     ionViewDidLoad() {
     }
 
-    openDetail(item:Item) {
+    openDetail(item:Item, user) {
         this.navCtrl.push('OrderDetailPage', {
-            item: item
+            item: item,
+            user: user
         });
     }
 }

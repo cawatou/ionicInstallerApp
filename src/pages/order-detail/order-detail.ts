@@ -1,7 +1,5 @@
 import {Component}                              from '@angular/core';
 import {IonicPage, NavController, NavParams}    from 'ionic-angular';
-
-import {Items}                                  from '../../providers/providers';
 import {Item}                                   from '../../models/item';
 
 @IonicPage()
@@ -11,24 +9,27 @@ import {Item}                                   from '../../models/item';
 })
 export class OrderDetailPage {
     item:any;
+    user:any;
 
-    constructor(public navCtrl:NavController, navParams:NavParams, items:Items) {
-        //this.item = navParams.get('item') || items.defaultItem;
+    constructor(public navCtrl:NavController, navParams:NavParams) {
         this.item = navParams.get('item');
+        this.user = navParams.get('user');
     }
 
     ionViewDidLoad() {
     }
 
-    openOrderList(item:Item) {
+    openOrderList(item:Item, user) {
         this.navCtrl.push('OrderListPage', {
-            item: item
+            item: item,
+            user: user
         });
     }
 
-    openOrderMap(item:Item) {
+    openOrderMap(item:Item, user) {
         this.navCtrl.push('OrderMapPage', {
-            item: item
+            item: item,
+            user: user
         });
     }
 }

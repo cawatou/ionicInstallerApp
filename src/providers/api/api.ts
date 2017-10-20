@@ -1,26 +1,21 @@
 import 'rxjs/add/operator/map';
 
 import {Injectable} from '@angular/core';
-import {Http, RequestOptions, URLSearchParams} from '@angular/http';
+import {Http, RequestOptions} from '@angular/http';
 
-/**
- * Api is a generic REST Api handler. Set your API url first.
- */
 @Injectable()
 export class Api {
-    //url: string = 'https://example.com/api/v1';
-    url:string = 'http://192.168.88.55:84/DomofonAPI/hs/MastersAPI';
-
+    url:string;
 
     constructor(public http:Http) {
     }
 
-    get(endpoint:string, params?:any, options?:RequestOptions) {
+    get(params?:any, options?:RequestOptions) {
+        this.url = 'http://192.168.88.55:84/DomofonAPI/hs/MastersAPI';
         if (!options) {
             options = new RequestOptions();
         }
 
-        this.url = this.url + endpoint;
         if (params) {
             for (let k in params) this.url = this.url + '/' + params[k];
         }

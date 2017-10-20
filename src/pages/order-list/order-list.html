@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="anm w">
-        <div class="item item1" *ngFor="let item of currentItems" ion-item (click)="openDetail(item)">
+        <div class="item item1" *ngFor="let item of currentItems" ion-item (click)="openDetail(item, user)">
             <div class="left">
                 <div class="t1">{{ item.Malfunctions }}</div>
                 <div class="t2">{{ item.Address }}</div>

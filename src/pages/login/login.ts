@@ -1,50 +1,33 @@
-import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
-
-import { User } from '../../providers/providers';
-import { MainPage } from '../pages';
+import {Component}                 from '@angular/core';
+import {IonicPage, NavController}  from 'ionic-angular';
+import {Api}                       from '../../providers/api/api';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+    selector: 'page-login',
+    templateUrl: 'login.html'
 })
 export class LoginPage {
-  // The account fields for the login form.
-  // If you're using the username field with or without email, make
-  // sure to add it to the type
-  account: { email: string, password: string } = {
-    email: 'test@example.com',
-    password: 'test'
-  };
+    account:{ username:string, password:string } = {
+        username: '',
+        password: ''
+    };
+    params:any;
 
-  // Our translated text strings
-  private loginErrorString: string;
+    constructor(public navCtrl:NavController, public api:Api) {
+    }
 
-  constructor(public navCtrl: NavController,
-    public user: User,
-    public toastCtrl: ToastController,
-    public translateService: TranslateService) {
-
-    this.translateService.get('LOGIN_ERROR').subscribe((value) => {
-      this.loginErrorString = value;
-    })
-  }
-
-  // Attempt to login in through our User service
-  doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
-      this.navCtrl.push(MainPage);
-      // Unable to log in
-      let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
-  }
+    doLogin() {
+        this.params = [
+            'autorization',          // api method
+            this.account.username,   // login
+            this.account.password    // pass
+        ];
+        this.api.get(this.params).subscribe(data => {
+            //console.log(data.json());
+            this.navCtrl.push('OrderListPage', {
+                user: data.json()
+            });
+        });
+    }
 }

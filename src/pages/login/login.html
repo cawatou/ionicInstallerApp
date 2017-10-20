@@ -1,39 +1,24 @@
-<ion-header>
+<div class="logo">
+    <img class="logo-img" src="assets/html/img/logo-img.png">
+    <img class="logo-text" src="assets/html/img/logo-text.png">
+</div>
+<div class="form w">
+    <form (submit)="doLogin()">
+        <div class="field-login">
+            <input type="text" name="login" placeholder="Введите логин" [(ngModel)]="account.username"></div>
+        <div class="field-password">
+            <input type="password" name="password" placeholder="Введите пароль" [(ngModel)]="account.password"></div>
+        <button class="button" data-fancybox data-src="#pop1" href="javascript:;">Начать работу</button>
+    </form>
+</div>
 
-  <ion-navbar>
-    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content>
-  <form (submit)="doLogin()">
-    <ion-list>
-
-      <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
-      </ion-item>
-
-      <!--
-      Want to use a Username instead of an Email? Here you go:
-
-      <ion-item>
-        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
-      </ion-item>
-      -->
-
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
-
-      <div padding>
-        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
-      </div>
-
-    </ion-list>
-  </form>
-</ion-content>
+<div style="display: none;" class="popup pop1" id="pop1">
+    <div class="title">Невозможно соедениться с сервером</div>
+    <div class="text">
+        <p>Проверьте подключение к сети интернет и повторите попытку</p>
+    </div>
+    <div class="buttons">
+        <button data-fancybox-close="" class="button close" title="Close">Закрыть</button>
+        <button class="button">Повторить</button>
+    </div>
+</div>
