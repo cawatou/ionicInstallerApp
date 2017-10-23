@@ -3,7 +3,7 @@ import {IonicPage, NavController}  from 'ionic-angular';
 import {Api}                       from '../../providers/api/api';
 
 @IonicPage()
-@Component({
+@Component({ 
     selector: 'page-login',
     templateUrl: 'login.html'
 })
@@ -25,6 +25,7 @@ export class LoginPage {
         ];
         this.api.get(this.params).subscribe(data => {
             //console.log(data.json());
+            
             this.navCtrl.push('OrderListPage', {
                 user: data.json()
             });

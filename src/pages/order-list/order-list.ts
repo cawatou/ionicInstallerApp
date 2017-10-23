@@ -20,9 +20,10 @@ import {Api}                                        from '../../providers/api/ap
     templateUrl: 'order-list.html'
 })
 export class OrderListPage {
-    currentItems:Item[];
+    items:Item[];
     params: any;
     user: any;
+    item: any;
 
     constructor(public navCtrl:NavController,
                 public api:Api,
@@ -31,13 +32,13 @@ export class OrderListPage {
         this.user = navParams.get('user');
         this.params = ['requests', '0', this.user.Master, '1', '3'];
         this.api.get(this.params)
-            .subscribe(data => this.currentItems = data.json());
+            .subscribe(data => this.items = data.json());
     }
 
     ionViewDidLoad() {
     }
 
-    openDetail(item:Item, user) {
+    openDetail(item, user) {
         this.navCtrl.push('OrderDetailPage', {
             item: item,
             user: user

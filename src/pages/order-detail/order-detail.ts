@@ -19,14 +19,14 @@ export class OrderDetailPage {
     ionViewDidLoad() {
     }
 
-    openOrderList(item:Item, user) {
+    openOrderList(item, user) {
         this.navCtrl.push('OrderListPage', {
             item: item,
             user: user
         });
     }
 
-    openOrderMap(item:Item, user) {
+    openOrderMap(item, user) {
         this.navCtrl.push('OrderMapPage', {
             item: item,
             user: user

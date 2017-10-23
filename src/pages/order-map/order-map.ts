@@ -10,14 +10,15 @@ import {Item}                                   from '../../models/item';
 })
 export class OrderMapPage {
     item:any;
+    user:any;
 
     constructor(public navCtrl:NavController, navParams:NavParams) {
         //this.item = navParams.get('item') || items.defaultItem;
         this.item = navParams.get('item');
-        this.item = navParams.get('user');
+        this.user = navParams.get('user');
     }
 
-    openOrderDetail(item:Item, user) {
+    openOrderDetail(item, user) {
         this.navCtrl.push('OrderDetailPage', {
             item: item,
             user: user
