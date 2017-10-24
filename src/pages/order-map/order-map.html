@@ -2,8 +2,21 @@
     <div>{{ item.Address }}</div>
 </div>
 <div class="aa-map w">
-    <script type="text/javascript" charset="utf-8" async
-            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ag7OHYA_h8wnS-xmr17m9onzcxv4MoVoW&amp;width=100%&amp;height=580&amp;lang=ru_RU&amp;scroll=true"></script>
+
+    <ya-map [latitude]="55.76" [longitude]="37.64">
+        <ya-marker
+                [latitude]="60.024594"
+                [longitude]="30.415752"
+                [balloonContentHeader]=[balloonHeader]
+                [balloonContentBody]=[balloonBody]
+                [balloonContentFooter]=[balloonFooter]>
+        </ya-marker>
+        <ya-marker
+                [latitude]="30.615752"
+                [longitude]="61.024594">
+        </ya-marker>
+    </ya-map>
+
     <a class="button" href="#">
         <div class="icon"></div>
         <div class="text">СМС «Скоро приеду»</div>

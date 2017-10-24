@@ -12,6 +12,7 @@ export class Api {
 
     get(params?:any, options?:RequestOptions) {
         this.url = 'http://192.168.88.55:84/DomofonAPI/hs/MastersAPI';
+        //this.url = 'http://79.173.100.11:84/DomofonAPI/hs/MastersAPI';
         if (!options) {
             options = new RequestOptions();
         }
@@ -20,6 +21,14 @@ export class Api {
             for (let k in params) this.url = this.url + '/' + params[k];
         }
 
+        return this.http.get(this.url, options);
+    }
+
+    getMap(address?:any, options?:RequestOptions) {
+        this.url = 'https://geocode-maps.yandex.ru/1.x/?format=json&geocode='+ address + '&results=1';
+        if (!options) {
+            options = new RequestOptions();
+        }
         return this.http.get(this.url, options);
     }
 

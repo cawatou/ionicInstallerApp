@@ -1,7 +1,6 @@
 import {Component}                              from '@angular/core';
 import {IonicPage, NavController, NavParams}    from 'ionic-angular';
 
-import {Item}                                   from '../../models/item';
 
 @IonicPage()
 @Component({
@@ -12,10 +11,16 @@ export class OrderMapPage {
     item:any;
     user:any;
 
+    name:string;
+    balloonHeader = 'Header';
+    balloonBody = '<img class="page_avatar_img" src="https://pp.vk.me/c836238/v836238142/1fa2b/G4XOGyOyn9g.jpg" alt="Александр  Шатилов" width="200" height="200">';
+    balloonFooter = 'Footer';
+
     constructor(public navCtrl:NavController, navParams:NavParams) {
         //this.item = navParams.get('item') || items.defaultItem;
         this.item = navParams.get('item');
         this.user = navParams.get('user');
+        this.name = 'Angular2';
     }
 
     openOrderDetail(item, user) {
@@ -24,4 +29,5 @@ export class OrderMapPage {
             user: user
         });
     }
+
 }

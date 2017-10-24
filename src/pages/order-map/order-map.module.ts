@@ -1,8 +1,9 @@
-import {NgModule} from '@angular/core';
-import {TranslateModule} from '@ngx-translate/core';
-import {IonicPageModule} from 'ionic-angular';
+import {NgModule}           from '@angular/core';
+import {TranslateModule}    from '@ngx-translate/core';
+import {IonicPageModule}    from 'ionic-angular';
 
-import {OrderMapPage} from './order-map';
+import {OrderMapPage}       from './order-map';
+import {YaCoreModule}       from 'angular2-yandex-maps';
 
 @NgModule({
     declarations: [
@@ -10,7 +11,8 @@ import {OrderMapPage} from './order-map';
     ],
     imports: [
         IonicPageModule.forChild(OrderMapPage),
-        TranslateModule.forChild()
+        TranslateModule.forChild(),
+        YaCoreModule.forRoot()
     ],
     exports: [
         OrderMapPage
