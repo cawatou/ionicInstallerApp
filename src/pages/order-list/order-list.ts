@@ -44,4 +44,15 @@ export class OrderListPage {
             user: user
         });
     }
+
+    openMap(items) {
+        /*for(var i = 0; i < items.length; i++){
+            this.api.getMapCoord(items[i].Address)
+                .subscribe(data => this.items_coord[i] = data.json() ) ;
+        }  */
+
+        this.navCtrl.push('MapPage', {
+            items: items
+        });
+    }
 }

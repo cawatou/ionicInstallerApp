@@ -24,7 +24,7 @@ export class Api {
         return this.http.get(this.url, options);
     }
 
-    getMap(address?:any, options?:RequestOptions) {
+    getMapCoord(address?:any, options?:RequestOptions) {
         this.url = 'https://geocode-maps.yandex.ru/1.x/?format=json&geocode='+ address + '&results=1';
         if (!options) {
             options = new RequestOptions();
