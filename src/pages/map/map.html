@@ -2,7 +2,16 @@
     <div>26 апреля</div>
 </div>
 <div class="aa-map w">
-    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ag7OHYA_h8wnS-xmr17m9onzcxv4MoVoW&amp;width=100%25&amp;height=580&amp;lang=ru_RU&amp;scroll=true"></script>
+    <ya-map [latitude]='59.9342802' [longitude]='30.3350986' [zoom] = '10'>
+        <ya-marker *ngFor="let marker of markers"
+                [latitude]= [marker.lon]
+                [longitude]= [marker.lat]>
+        </ya-marker>
+    </ya-map>
+    <div *ngFor="let marker of markers">
+        <p>{{marker.lon}}</p>
+        <p>{{marker.lat}}</p>
+    </div>
 </div>
 <footer class="footer f2 w">
     <div class="item active">

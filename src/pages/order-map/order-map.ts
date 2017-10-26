@@ -12,9 +12,9 @@ export class OrderMapPage {
     user: any;
     lat: any;
     lon: any;
-    balloonHeader = 'Header';
-    balloonBody = '<img class="page_avatar_img" src="https://pp.vk.me/c836238/v836238142/1fa2b/G4XOGyOyn9g.jpg" width="200" height="200">';
-    balloonFooter = 'Footer';
+    balloonBody: string;
+    ln: '30.335';
+    lt: '59.944';
 
     constructor(public navCtrl: NavController, navParams: NavParams, public api: Api) {
 
@@ -26,7 +26,7 @@ export class OrderMapPage {
                 let coord = data.json().response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
                 this.lon = coord[0];
                 this.lat = coord[1];
-                console.log(coord);
+                this.balloonBody = this.item.Address;
             });
 
     }

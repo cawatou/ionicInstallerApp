@@ -1,19 +1,21 @@
-import { NgModule } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
-import { IonicPageModule } from 'ionic-angular';
-
-import { MapPage } from './map';
+import {NgModule}           from '@angular/core';
+import {TranslateModule}    from '@ngx-translate/core';
+import {IonicPageModule}    from 'ionic-angular';
+import {YaCoreModule}       from 'angular2-yandex-maps';
+import {MapPage}            from './map';
 
 @NgModule({
-  declarations: [
-    MapPage,
-  ],
-  imports: [
-    IonicPageModule.forChild(MapPage),
-    TranslateModule.forChild()
-  ],
-  exports: [
-    MapPage
-  ]
+    declarations: [
+        MapPage,
+    ],
+    imports: [
+        IonicPageModule.forChild(MapPage),
+        TranslateModule.forChild(),
+        YaCoreModule.forRoot()
+    ],
+    exports: [
+        MapPage
+    ]
 })
-export class MapPageModule { }
+export class MapPageModule {
+}
