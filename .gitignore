@@ -12,6 +12,8 @@ log.txt
 .vscode/
 npm-debug.log*
 
+
+
 .idea/
 .sass-cache/
 .tmp/
@@ -26,7 +28,12 @@ platforms/
 plugins/
 plugins/android.json
 plugins/ios.json
-www/
+
+www/*
+!www/assets/
+www/assets/*
+!www/assets/html/
+
 $RECYCLE.BIN/
 
 .DS_Store

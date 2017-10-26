@@ -1,8 +1,8 @@
-import {Component}                                  from '@angular/core';
-import {IonicPage, NavController, NavParams}        from 'ionic-angular';
+import { Component }                                  from '@angular/core';
+import { IonicPage, NavController, NavParams }        from 'ionic-angular';
 
-import {Item}                                       from '../../models/item';
-import {Api}                                        from '../../providers/api/api';
+import { Item }                                       from '../../models/item';
+import { Api }                                        from '../../providers/api/api';
 
 /**
  * params = [

@@ -1,19 +1,22 @@
 <div class="header">
-    <div>{{ item.Address }}</div>
+    <div>{{ item.Address }}
+    {{ coord }}
+
+    </div>
 </div>
 <div class="aa-map w">
 
-    <ya-map [latitude]="55.76" [longitude]="37.64">
+    <ya-map [latitude]=[lat] [longitude]=[lon]>
         <ya-marker
-                [latitude]="60.024594"
-                [longitude]="30.415752"
+                [latitude]=[lat]
+                [longitude]=[lon]
                 [balloonContentHeader]=[balloonHeader]
                 [balloonContentBody]=[balloonBody]
                 [balloonContentFooter]=[balloonFooter]>
         </ya-marker>
         <ya-marker
-                [latitude]="30.615752"
-                [longitude]="61.024594">
+                [latitude]=[lon]
+                [longitude]=[lat]>
         </ya-marker>
     </ya-map>
 
