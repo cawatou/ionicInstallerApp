@@ -2,16 +2,14 @@
     <div>26 апреля</div>
 </div>
 <div class="aa-map w">
-    <ya-map [latitude]='59.9342802' [longitude]='30.3350986' [zoom] = '10'>
-        <ya-marker *ngFor="let marker of markers"
-                [latitude]= [marker.lon]
-                [longitude]= [marker.lat]>
-        </ya-marker>
-    </ya-map>
-    <div *ngFor="let marker of markers">
-        <p>{{marker.lon}}</p>
-        <p>{{marker.lat}}</p>
+
+    <div class="map">
+        <ya-map [latitude]="59.9342802" [longitude]="30.3350986" [zoom]="6">
+            <ya-object-manager [datasource]="markerObjects" [gridSize]="50" [clusterize]="true" [selectedObjectId]="selectedObjectId">
+            </ya-object-manager>
+        </ya-map>
     </div>
+
 </div>
 <footer class="footer f2 w">
     <div class="item active">
