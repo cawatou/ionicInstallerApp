@@ -1,6 +1,7 @@
-import {Component}                 from '@angular/core';
-import {IonicPage, NavController}  from 'ionic-angular';
-import {Api}                       from '../../providers/api/api';
+import { Component }                 from '@angular/core';
+import { IonicPage, NavController }  from 'ionic-angular';
+import { Api }                       from '../../providers/api/api';
+import { Storage }                   from '@ionic/storage';
 
 @IonicPage()
 @Component({ 
@@ -8,13 +9,14 @@ import {Api}                       from '../../providers/api/api';
     templateUrl: 'login.html'
 })
 export class LoginPage {
-    account:{ username:string, password:string } = {
+    account:{ username: string, password: string } = {
         username: '',
         password: ''
     };
-    params:any;
+    params: any;
+    user: any;
 
-    constructor(public navCtrl:NavController, public api:Api) {
+    constructor(public navCtrl: NavController, public api: Api, private storage: Storage) {
     }
 
     doLogin() {
@@ -25,10 +27,9 @@ export class LoginPage {
         ];
         this.api.get(this.params).subscribe(data => {
             //console.log(data.json());
-            
-            this.navCtrl.push('OrderListPage', {
-                user: data.json()
-            });
+            this.user = data.json();
+            this.storage.set('user', this.user);
+            this.navCtrl.push('OrderListPage');
         });
     }
 }

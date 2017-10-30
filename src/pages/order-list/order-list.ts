@@ -1,9 +1,8 @@
 import { Component }                                  from '@angular/core';
 import { IonicPage, NavController, NavParams }        from 'ionic-angular';
-
 import { Item }                                       from '../../models/item';
 import { Api }                                        from '../../providers/api/api';
-
+import { Storage }                                    from '@ionic/storage';
 /**
  * params = [
  *      'method',           // request type
@@ -25,32 +24,22 @@ export class OrderListPage {
     user: any;
     item: any;
 
-    constructor(public navCtrl:NavController,
-                public api:Api,
-                public navParams:NavParams) {
-
-        this.user = navParams.get('user');
-        this.params = ['requests', '0', this.user.Master, '1', '3'];
-        this.api.get(this.params)
-            .subscribe(data => this.items = data.json());
+    constructor(public navCtrl: NavController, public api: Api, private storage: Storage) {
+        this.storage.get('user').then(val => {
+            this.user = val
+            this.params = ['requests', '0', this.user.Master, '1', '3'];
+            this.api.get(this.params)
+                .subscribe(data => this.items = data.json());
+        });
     }
 
-    ionViewDidLoad() {
-    }
-
-    openDetail(item, user) {
+    openDetail(item) {
         this.navCtrl.push('OrderDetailPage', {
-            item: item,
-            user: user
+            item: item
         });
     }
 
     openMap(items) {
-        /*for(var i = 0; i < items.length; i++){
-            this.api.getMapCoord(items[i].Address)
-                .subscribe(data => this.items_coord[i] = data.json() ) ;
-        }  */
-
         this.navCtrl.push('MapPage', {
             items: items
         });
