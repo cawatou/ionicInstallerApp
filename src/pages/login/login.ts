@@ -3,12 +3,13 @@ import { IonicPage, NavController }  from 'ionic-angular';
 import { Api }                       from '../../providers/api/api';
 import { Storage }                   from '@ionic/storage';
 
+
 @IonicPage()
 @Component({ 
     selector: 'page-login',
     templateUrl: 'login.html'
 })
-export class LoginPage {
+export class LoginPage  {
     account:{ username: string, password: string } = {
         username: '',
         password: ''

@@ -1,8 +1,9 @@
-import { Component }                                  from '@angular/core';
-import { IonicPage, NavController, NavParams }        from 'ionic-angular';
-import { Item }                                       from '../../models/item';
-import { Api }                                        from '../../providers/api/api';
-import { Storage }                                    from '@ionic/storage';
+import { Component }                       from '@angular/core';
+import { IonicPage, NavController }        from 'ionic-angular';
+import { Item }                            from '../../models/item';
+import { Api }                             from '../../providers/api/api';
+import { Storage }                         from '@ionic/storage';
+
 /**
  * params = [
  *      'method',           // request type
@@ -43,5 +44,13 @@ export class OrderListPage {
         this.navCtrl.push('MapPage', {
             items: items
         });
+    }
+
+    openMain() {
+        this.navCtrl.push('MainPage');
+    }
+
+    openProfile() {
+        this.navCtrl.push('ProfilePage');
     }
 }

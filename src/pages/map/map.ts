@@ -1,7 +1,6 @@
-import {Component}                              from '@angular/core';
-import {IonicPage, NavController, NavParams}    from 'ionic-angular';
-import {Api}                                    from "../../providers/api/api";
-
+import { Component }                              from '@angular/core';
+import { IonicPage, NavController, NavParams }    from 'ionic-angular';
+import { Api }                                    from "../../providers/api/api";
 
 @IonicPage()
 @Component({
@@ -17,9 +16,8 @@ export class MapPage {
     constructor(public navCtrl:NavController, public navParams:NavParams, public api:Api) {
         this.items = navParams.get('items');
 
-        console.log(this.items);
+        //console.log(this.items);
         let features = new Array<any>();
-        var coord = [];
         for (var i = 0; i < this.items.length; i++) {
             this.api.getMapCoord(this.items[i].Address)
                 .subscribe(data => {
@@ -27,16 +25,8 @@ export class MapPage {
                     let lon = res[0];
                     let lat = res[1];
                     features.push(this.getFeature(lat, lon));
-                    //coord.push({'lon': lon, 'lat': lat});
                 });
         }
-
-        // this.markers = coord;
-        //
-        //
-        // for(var i= 0; i< 5000; i++){
-        //     features.push(this.getFeature(i));
-        // }
 
         this.markerObjects = {
             "type": "FeatureCollection",
@@ -49,7 +39,6 @@ export class MapPage {
     getFeature(lat: string, lon: string){
         return   {
             "type": "Feature",
-            //"id": id,
             "geometry": {
                 "type": "Point",
                 "coordinates": [lat, lon]
@@ -62,6 +51,23 @@ export class MapPage {
         };
     }
 
-    ionViewDidLoad() {
+    openScheduler(item) {
+        this.navCtrl.push('SchedulerPage', {
+            item: item
+        });
+    }
+
+    openMap(items) {
+        this.navCtrl.push('MapPage', {
+            items: items
+        });
+    }
+
+    openMain() {
+        this.navCtrl.push('MainPage');
+    }
+
+    openProfile() {
+        this.navCtrl.push('ProfilePage');
     }
 }
