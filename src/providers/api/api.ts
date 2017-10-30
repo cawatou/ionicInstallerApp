@@ -11,8 +11,8 @@ export class Api {
     }
 
     get(params?:any, options?:RequestOptions) {
-        //this.url = 'http://192.168.88.55:84/DomofonAPI/hs/MastersAPI';
-        this.url = 'http://79.173.100.11:84/DomofonAPI/hs/MastersAPI';
+        this.url = 'http://192.168.88.55:84/DomofonAPI/hs/MastersAPI';
+        //this.url = 'http://79.173.100.11:84/DomofonAPI/hs/MastersAPI';
         if (!options) {
             options = new RequestOptions();
         }
@@ -32,6 +32,7 @@ export class Api {
         return this.http.get(this.url, options);
     }
 
+    /*
     post(endpoint:string, body:any, options?:RequestOptions) {
         return this.http.post(this.url + '/' + endpoint, body, options);
     }
@@ -47,4 +48,5 @@ export class Api {
     patch(endpoint:string, body:any, options?:RequestOptions) {
         return this.http.put(this.url + '/' + endpoint, body, options);
     }
+    */
 }

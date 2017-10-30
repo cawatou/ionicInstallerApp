@@ -30,6 +30,7 @@ plugins/android.json
 plugins/ios.json
 
 www/*
+!www/index.html
 !www/assets/
 www/assets/*
 !www/assets/html/
