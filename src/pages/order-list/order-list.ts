@@ -25,13 +25,17 @@ export class OrderListPage {
     user: any;
     item: any;
 
-    constructor(public navCtrl: NavController, public api: Api, private storage: Storage) {
-        this.storage.get('user').then(val => {
-            this.user = val;
-            this.params = ['requests', '0', this.user.Master, '1', '3'];
-            this.api.get(this.params)
-                .subscribe(data => this.items = data.json());
-        });
+    constructor(
+        public navCtrl: NavController,
+        public api: Api,
+        private storage: Storage) {
+        
+            this.storage.get('user').then(val => {
+                this.user = val;
+                this.params = ['requests', '0', this.user.Master, '1', '3'];
+                this.api.get(this.params)
+                    .subscribe(data => this.items = data.json());
+            });
     }
 
     openDetail(item) {

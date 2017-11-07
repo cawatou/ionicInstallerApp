@@ -28,7 +28,6 @@ export class OrderMapPage {
                 this.lat = coord[1];
                 this.balloonBody = this.item.Address;
             });
-
     }
 
     openOrderDetail(item, user) {
@@ -38,4 +37,9 @@ export class OrderMapPage {
         });
     }
 
+    openOrderConfirm(item) {
+        this.navCtrl.push('OrderConfirmPage', {
+            item: item
+        });
+    }
 }

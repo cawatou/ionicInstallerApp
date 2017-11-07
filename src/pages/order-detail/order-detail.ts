@@ -12,7 +12,7 @@ export class OrderDetailPage {
 
     constructor(public navCtrl:NavController, navParams:NavParams) {
         this.item = navParams.get('item');
-        this.user = navParams.get('user');
+       // this.user = navParams.get('user');
     }
 
     ionViewDidLoad() {
@@ -28,7 +28,7 @@ export class OrderDetailPage {
     openOrderMap(item, user) {
         this.navCtrl.push('OrderMapPage', {
             item: item,
-            user: user
+            //user: user
         });
     }
 }
