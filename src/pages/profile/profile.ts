@@ -1,7 +1,9 @@
 import { Component }                              from '@angular/core';
-import { IonicPage, NavController, NavParams }    from 'ionic-angular';
-import { Api }                                    from "../../providers/api/api";
 import { Storage }                                from '@ionic/storage';
+import { IonicPage, NavController }               from 'ionic-angular';
+import { Api }                                    from "../../providers/api/api";
+import { Item }                                   from '../../models/item';
+
 
 @IonicPage()
 @Component({
@@ -9,32 +11,30 @@ import { Storage }                                from '@ionic/storage';
     templateUrl: 'profile.html'
 })
 export class ProfilePage {
-    item:any;
-    user:any;
+    items:Item[];
+    params: any;
+    user: any;
 
-    constructor(public navCtrl:NavController,
-                public navParams:NavParams,
-                public api: Api,
-                private storage: Storage) {
+    constructor(public navCtrl: NavController, public api: Api, private storage: Storage) {
         this.storage.get('user').then(val => {
-            this.user = val
+            this.user = val;
+            this.params = ['requests', '0', this.user.Master, '1', '3'];
+            this.api.get(this.params)
+                .subscribe(data => this.items = data.json());
         });
     }
 
-    ionViewDidLoad() {
+    openScheduler() {
+        this.navCtrl.push('SchedulerPage');
     }
 
-    openOrderList(item, user) {
-        this.navCtrl.push('OrderListPage', {
-            item: item,
-            user: user
+    openMap(items) {
+        this.navCtrl.push('MapPage', {
+            items: items
         });
     }
 
-    openOrderMap(item, user) {
-        this.navCtrl.push('OrderMapPage', {
-            item: item,
-            user: user
-        });
+    openMain() {
+        this.navCtrl.push('MainPage');
     }
 }
