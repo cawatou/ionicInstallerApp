@@ -11,14 +11,15 @@
     <div class="popup pop3" id="pop3">
         <div class="w" *ngFor="let select of select_count">
             <div class="select">
-                <select>
-                    <option value="0">Выберите деталь</option>
-                    <option *ngFor="let remain of remains">{{ remain.Nomenclature }}</option>
-                </select>
+                <ion-select [ngModel]=[select]>
+                    <ion-option [checked]='1' value="0">Выберите деталь</ion-option>
+                    <ion-option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</ion-option>
+                </ion-select>
             </div>
             <div class="number-plus-minus">
                 <input value="0" type="number" />
             </div>
         </div>
+        <a class="button b3m w" href="#">Подписать акт выполненных работ</a>
     </div>
 </ion-content>
