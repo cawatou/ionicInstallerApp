@@ -25,12 +25,4 @@ export class ModalRemainsPage {
                 .subscribe(data => this.remains = data.json());
         });
     }
-
-    openOrderDetail(item, user) {
-        this.navCtrl.push('OrderDetailPage', {
-            item: item,
-            user: user
-        });
-    }
-
 }
