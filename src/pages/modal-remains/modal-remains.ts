@@ -12,6 +12,7 @@ export class ModalRemainsPage {
     remains: any;
     user: any;
     params: any;
+    select_count: any[];
 
     constructor(
         public navCtrl: NavController,
@@ -24,5 +25,7 @@ export class ModalRemainsPage {
             this.api.get(this.params)
                 .subscribe(data => this.remains = data.json());
         });
+
+        this.select_count =  Array(10).fill(1);
     }
 }

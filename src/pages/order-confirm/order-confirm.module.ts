@@ -1,19 +1,16 @@
 import { NgModule }                             from '@angular/core';
 import { IonicPageModule }                      from 'ionic-angular';
-import { OrderConfirmPage, ModalRemainsPage }   from './order-confirm';
+import { OrderConfirmPage }                     from './order-confirm';
 
 @NgModule({
     declarations: [
-        OrderConfirmPage,
-        ModalRemainsPage
+        OrderConfirmPage
     ],
     imports: [
-        IonicPageModule.forChild(OrderConfirmPage),
-        IonicPageModule.forChild(ModalRemainsPage)
+        IonicPageModule.forChild(OrderConfirmPage)
     ],
     exports: [
-        OrderConfirmPage,
-        ModalRemainsPage
+        OrderConfirmPage
     ]
 })
 export class OrderConfirmPageModule {
