@@ -1,25 +1,123 @@
 <ion-header>
-
     <ion-navbar>
         <ion-title>Что вы использовали для ремонта?</ion-title>
     </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-    <div class="popup pop3" id="pop3">
-        <div class="w" *ngFor="let select of select_count">
-            <div class="select">
-                <ion-select [ngModel]=[select]>
-                    <ion-option [checked]='1' value="0">Выберите деталь</ion-option>
-                    <ion-option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</ion-option>
-                </ion-select>
+    <form (submit)="remains_submit()">
+        <div class="popup pop3" id="pop3">
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_1" name="sremain_1">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_1" name="iremain_1" value="0" type="number" />
+                </div>
             </div>
-            <div class="number-plus-minus">
-                <input value="0" type="number" />
+
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_2" name="sremain_2">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_2" name="iremain_2" value="0" type="number" />
+                </div>
             </div>
+
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_3" name="sremain_3">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_3" name="iremain_3" value="0" type="number" />
+                </div>
+            </div>
+
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_4" name="sremain_4">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_4" name="iremain_4" value="0" type="number" />
+                </div>
+            </div>
+
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_5" name="sremain_5">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_5" name="iremain_5" value="0" type="number" />
+                </div>
+            </div>
+
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_6" name="sremain_6">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_6" name="iremain_6" value="0" type="number" />
+                </div>
+            </div>
+
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_7" name="sremain_7">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_7" name="iremain_7" value="0" type="number" />
+                </div>
+            </div>
+
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_8" name="sremain_8">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_8" name="iremain_8" value="0" type="number" />
+                </div>
+            </div>
+
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_9" name="sremain_9">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_9" name="iremain_9" value="0" type="number" />
+                </div>
+            </div>
+
+            <div class="w">
+                <div class="select">
+                    <select [(ngModel)]="select.remain_10" name="sremain_10">
+                        <option *ngFor="let remain of remains" value="{{ remain.Nomenclature }}">{{ remain.Nomenclature }}</option>
+                    </select>
+                </div>
+                <div class="number-plus-minus">
+                    <input [(ngModel)]="input.remain_10" name="iremain_10" value="0" type="number" />
+                </div>
+            </div>
+
+            <button class="button b3m w">Подписать акт выполненных работ</button>
         </div>
-        <a class="button b3m w" href="#">Подписать акт выполненных работ</a>
-    </div>
+    </form>
 </ion-content>

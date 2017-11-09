@@ -11,8 +11,9 @@ import { Storage }                     from '@ionic/storage';
 export class ModalRemainsPage {
     remains: any;
     user: any;
-    params: any;
-    select_count: string[] = [];
+    equip: {} = {};
+    select: {} = {};
+    input: {} = {};
 
     constructor(
         public navCtrl: NavController,
@@ -21,14 +22,30 @@ export class ModalRemainsPage {
 
         this.storage.get('user').then(val => {
             this.user = val;
-            this.params = ['remains', this.user.Master];
-            this.api.get(this.params)
+            let params = ['remains', this.user.Master];
+            this.api.get(params)
                 .subscribe(data => this.remains = data.json());
         });
+    }
 
-        for(let i = 1; i <= 10; i++) {
-            let name = 'remains_'+i;
-            this.select_count.push(name);
-        }
+    remains_submit(){
+        let equip_arr = [];
+        for (let key in this.select) {
+            if(this.input[key]) equip_arr.push({"Nomenclature": this.select[key],"Amount": this.input[key].toString()});
+        };
+
+        this.equip = "{"+JSON.stringify(equip_arr)+"}";
+        let params;
+        params = [
+            'order',                // api method
+            this.user.Master,       // master
+            this.equip              // equipment (json)
+        ];
+
+        console.log('params: ', params);
+        this.api.get(params).subscribe(data => {
+            console.log(data);
+            //this.navCtrl.push('OrderActPage');
+        });
     }
 }

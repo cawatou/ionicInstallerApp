@@ -5,7 +5,6 @@ import { TranslateService }       from '@ngx-translate/core';
 import { Config, Nav, Platform }  from 'ionic-angular';
 import { FirstRunPage }           from '../pages/pages';
 
-
 @Component({
     template: `<ion-menu [content]="content">
     <ion-header>
@@ -42,12 +41,13 @@ export class MyApp {
         {title: 'main', component: 'MainPage'}
     ]
 
-    constructor(private translate:TranslateService,
-                private platform:Platform,
-                private config:Config,
-                private statusBar:StatusBar,
-                private splashScreen:SplashScreen) {
-        this.initTranslate();
+    constructor(
+        private translate:TranslateService,
+        private platform:Platform,
+        private config:Config,
+        private statusBar:StatusBar,
+        private splashScreen:SplashScreen) {
+            this.initTranslate();
     }
 
     ionViewDidLoad() {
