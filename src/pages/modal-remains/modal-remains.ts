@@ -1,7 +1,7 @@
-import { Component }                   from '@angular/core';
-import { IonicPage, NavController }    from 'ionic-angular';
-import { Api }                         from '../../providers/api/api';
-import { Storage }                     from '@ionic/storage';
+import { Component }                                    from '@angular/core';
+import { App, IonicPage, NavController, ViewController }     from 'ionic-angular';
+import { Api }                                          from '../../providers/api/api';
+import { Storage }                                      from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -18,6 +18,8 @@ export class ModalRemainsPage {
     constructor(
         public navCtrl: NavController,
         public api: Api,
+        public viewCtrl: ViewController,
+        public appCtrl: App,
         private storage: Storage) {
 
         this.storage.get('user').then(val => {
@@ -29,7 +31,7 @@ export class ModalRemainsPage {
     }
 
     remains_submit(){
-        let equip_arr = [];
+       /* let equip_arr = [];
         for (let key in this.select) {
             if(this.input[key]) equip_arr.push({"Nomenclature": this.select[key],"Amount": this.input[key].toString()});
         };
@@ -45,7 +47,10 @@ export class ModalRemainsPage {
         console.log('params: ', params);
         this.api.get(params).subscribe(data => {
             console.log(data);
-            //this.navCtrl.push('OrderActPage');
         });
+        */
+        this.viewCtrl.dismiss();
+        this.appCtrl.getRootNav().push('OrderActPage');
+        //this.navCtrl.push('OrderActPage');
     }
 }

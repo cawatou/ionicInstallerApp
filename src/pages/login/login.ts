@@ -21,9 +21,8 @@ export class LoginPage  {
     }
 
     doLogin() {
-        console.log(this.account);
-
-        /*this.params = [
+        //console.log(this.account);
+        this.params = [
             'autorization',          // api method
             this.account.username,   // login
             this.account.password    // pass
@@ -33,6 +32,6 @@ export class LoginPage  {
             this.user = data.json();
             this.storage.set('user', this.user);
             this.navCtrl.push('OrderListPage');
-        });*/
+        });
     }
 }
