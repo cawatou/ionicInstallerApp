@@ -1,24 +1,26 @@
-<div class="logo">
-    <img class="logo-img" src="assets/html/img/logo-img.png">
-    <img class="logo-text" src="assets/html/img/logo-text.png">
-</div>
-<div class="form w">
-    <form (submit)="doLogin()">
-        <div class="field-login">
-            <input type="text" name="login" placeholder="Введите логин" [(ngModel)]="account.username"></div>
-        <div class="field-password">
-            <input type="password" name="password" placeholder="Введите пароль" [(ngModel)]="account.password"></div>
-        <button class="button">Начать работу</button>
-    </form>
-</div>
+<ion-content>
+    <div class="logo">
+        <img class="logo-img" src="assets/html/img/logo-img.png">
+        <img class="logo-text" src="assets/html/img/logo-text.png">
+    </div>
+    <div class="form w">
+        <form (submit)="doLogin()">
+            <div class="field-login">
+                <input type="text" name="login" placeholder="Введите логин" [(ngModel)]="account.username"></div>
+            <div class="field-password">
+                <input type="password" name="password" placeholder="Введите пароль" [(ngModel)]="account.password"></div>
+            <button class="button">Начать работу</button>
+        </form>
+    </div>
 
-<div style="display: none;" class="popup pop1" id="pop1">
-    <div class="title">Невозможно соедениться с сервером</div>
-    <div class="text">
-        <p>Проверьте подключение к сети интернет и повторите попытку</p>
+    <div style="display: none;" class="popup pop1" id="pop1">
+        <div class="title">Невозможно соедениться с сервером</div>
+        <div class="text">
+            <p>Проверьте подключение к сети интернет и повторите попытку</p>
+        </div>
+        <div class="buttons">
+            <button data-fancybox-close="" class="button close" title="Close">Закрыть</button>
+            <button class="button">Повторить</button>
+        </div>
     </div>
-    <div class="buttons">
-        <button data-fancybox-close="" class="button close" title="Close">Закрыть</button>
-        <button class="button">Повторить</button>
-    </div>
-</div>
+</ion-content>
