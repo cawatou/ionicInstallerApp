@@ -1,13 +1,14 @@
 <div class="logo-page">Teledom master</div>
 <div class="welcome w">
     <div class="t1">Здравствуйте</div>
-    <div class="t2">{{ user.Name }}</div>
-    <div class="img"> <img src="img/user1.jpg"> </div>
+    <div class="t2">Фрид Александр</div>
+    <div class="img"> <!--img src="img/user1.jpg"--> </div>
 </div>
 <ul class="menu1">
     <li class="m1"> <a (click)="openContract()">Договоры</a> </li>
     <li class="m2"> <a (click)="openKnowledge()">База Знаний</a> </li>
-    <li class="m3"> <a (click)="openOffer()">Ваши предложения</a> </li>
+    <!--li class="m3"> <a (click)="openOffer()">Ваши предложения</a> </li-->
+    <li class="m3"> <a>Ваши предложения</a> </li>
     <li class="m4"> <a (click)="openScheduler()">Планировщик</a> </li>
 </ul>
 <div class="points w">
@@ -22,11 +23,11 @@
     </div>
 </div>
 <div class="request r1 w">
-    <a class="button" href="#">
+    <a class="button" (click)="openOrderList()">
         <div>Заявок на сегодня: 10</div>
     </a>
 </div>
-<button class="button w" data-fancybox data-src="#pop2" href="javascript:;">Начать работу</button>
+<button class="button w" (click)="openOrderList()">Начать работу</button>
 
 <div style="display: none;" class="popup pop2" id="pop2">
     <div class="t1">Вы начали рабочий день в</div>

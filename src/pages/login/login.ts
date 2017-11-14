@@ -31,7 +31,8 @@ export class LoginPage  {
             //console.log(data.json());
             this.user = data.json();
             this.storage.set('user', this.user);
-            this.navCtrl.push('OrderListPage');
+            this.navCtrl.push('MainPage');
+            //this.navCtrl.push('OrderListPage');
         });
     }
 }

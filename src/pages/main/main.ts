@@ -13,11 +13,18 @@ export class MainPage {
     params: any;
     user: any;
 
-    constructor(public navCtrl: NavController, public api: Api, private storage: Storage) {
-        this.storage.get('user').then(val => {
-            this.user = val;
-        });
+    constructor(
+        public navCtrl: NavController,
+        public api: Api,
+        private storage: Storage) {
+            this.storage.get('user').then(val => {
+                this.user = val;
+                console.log(this.user);
+            });
     }
+
+
+
 
     openContract() {
         this.navCtrl.push('ContractPage');

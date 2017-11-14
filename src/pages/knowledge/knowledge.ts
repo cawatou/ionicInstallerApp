@@ -11,7 +11,8 @@ export class KnowledgePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
+  openMain() {
+    this.navCtrl.push('MainPage');
   }
 
 }

@@ -15,11 +15,7 @@ export class OrderActPage {
                 
           }
 
-    openOrderDetail(item, user) {
-        this.navCtrl.push('OrderDetailPage', {
-            item: item,
-            user: user
-        });
+    openOrderList() {
+        this.navCtrl.push('OrderListPage');
     }
-
 }
