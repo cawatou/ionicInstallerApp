@@ -1,6 +1,7 @@
 import { Component }                 from '@angular/core';
 import { IonicPage, NavController }  from 'ionic-angular';
 import { Api }                       from '../../providers/api/api';
+import { Route }                     from '../../providers/route/route';
 import { Storage }                   from '@ionic/storage';
 
 
@@ -17,7 +18,7 @@ export class LoginPage  {
     params: any;
     user: any;
 
-    constructor(public navCtrl: NavController, public api: Api, private storage: Storage) {
+    constructor(public navCtrl: NavController, public api: Api, private storage: Storage, public route: Route) {
     }
 
     doLogin() {
@@ -31,8 +32,12 @@ export class LoginPage  {
             //console.log(data.json());
             this.user = data.json();
             this.storage.set('user', this.user);
-            this.navCtrl.push('MainPage');
+            this.navCtrl.setRoot('MainPage');
             //this.navCtrl.push('OrderListPage');
         });
+    }
+
+    openPage(page, data){
+        this.route.open(page, data);
     }
 }
