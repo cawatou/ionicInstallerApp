@@ -7,11 +7,11 @@ import {StatusBar}                                from '@ionic-native/status-bar
 import {IonicStorageModule, Storage}              from '@ionic/storage';
 import {TranslateLoader, TranslateModule}         from '@ngx-translate/core';
 import {TranslateHttpLoader}                      from '@ngx-translate/http-loader';
-import {IonicApp, IonicErrorHandler, IonicModule, NavController} from 'ionic-angular';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {Api}                                      from '../providers/api/api';
 import {MyApp}                                    from './app.component';
 import {Settings}                                 from '../providers/settings/settings';
-import {Route}                                    from "../providers/route/route";
+//import {Route}                                    from "../providers/route/route";
 
 import {GoogleMaps}                               from '@ionic-native/google-maps';
 
@@ -61,7 +61,7 @@ export function provideSettings(storage:Storage) {
     ],
     providers: [
         Api,
-        Route,
+        //Route,
         Camera,
         GoogleMaps,
         SplashScreen,

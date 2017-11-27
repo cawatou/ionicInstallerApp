@@ -2,7 +2,7 @@ import { Component, ViewChild }   from '@angular/core';
 import { SplashScreen }           from '@ionic-native/splash-screen';
 import { StatusBar }              from '@ionic-native/status-bar';
 import { TranslateService }       from '@ngx-translate/core';
-import {Config, Nav, Platform, NavController}  from 'ionic-angular';
+import { Config, Nav, Platform }  from 'ionic-angular';
 import { FirstRunPage }           from '../pages/pages';
 
 @Component({
@@ -29,7 +29,7 @@ import { FirstRunPage }           from '../pages/pages';
 export class MyApp {
     rootPage = FirstRunPage;
 
-    @ViewChild(Nav) nav: NavController
+    @ViewChild(Nav) nav: Nav;
 
 
     pages:any[] = [

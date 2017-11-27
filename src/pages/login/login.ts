@@ -1,7 +1,6 @@
 import { Component }                 from '@angular/core';
 import { IonicPage, NavController }  from 'ionic-angular';
 import { Api }                       from '../../providers/api/api';
-import { Route }                     from '../../providers/route/route';
 import { Storage }                   from '@ionic/storage';
 
 
@@ -10,7 +9,7 @@ import { Storage }                   from '@ionic/storage';
     selector: 'page-login',
     templateUrl: 'login.html'
 })
-export class LoginPage  {
+export class LoginPage {
     account:{ username: string, password: string } = {
         username: '',
         password: ''
@@ -18,7 +17,9 @@ export class LoginPage  {
     params: any;
     user: any;
 
-    constructor(public navCtrl: NavController, public api: Api, private storage: Storage, public route: Route) {
+    constructor(public navCtrl: NavController, 
+                public api: Api,
+                private storage: Storage) {
     }
 
     doLogin() {
@@ -37,7 +38,4 @@ export class LoginPage  {
         });
     }
 
-    openPage(page, data){
-        this.route.open(page, data);
-    }
 }
