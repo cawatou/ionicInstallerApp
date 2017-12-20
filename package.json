@@ -28,7 +28,7 @@
     "@ionic/storage": "2.0.1",
     "@ngx-translate/core": "6.0.1",
     "@ngx-translate/http-loader": "0.0.3",
-    "angular2-yandex-maps": "^1.1.1",
+    "angular2-yandex-maps": "^1.0.42",
     "cordova-android": "^6.4.0",
     "cordova-ios": "4.5.2",
     "cordova-plugin-compat": "^1.2.0",
