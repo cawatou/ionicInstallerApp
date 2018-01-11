@@ -3,7 +3,7 @@ import { IonicPage, NavController }        from 'ionic-angular';
 import { Item }                            from '../../models/item';
 import { Api }                             from '../../providers/api/api';
 import { Storage }                         from '@ionic/storage';
-
+import { LoadingController }               from 'ionic-angular';
 /**
  * params = [
  *      'method',           // request type
@@ -28,7 +28,8 @@ export class OrderListPage {
     constructor(
         public navCtrl: NavController,
         public api: Api,
-        private storage: Storage) {
+        private storage: Storage,
+        public loadingCtrl: LoadingController) {
         
             this.storage.get('user').then(val => {
                 this.user = val;
@@ -56,5 +57,13 @@ export class OrderListPage {
 
     openProfile() {
         this.navCtrl.push('ProfilePage');
+    }
+
+    presentLoading() {
+        let loader = this.loadingCtrl.create({
+            content: "Please wait...",
+            duration: 3000
+        });
+        loader.present();
     }
 }
