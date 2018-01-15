@@ -3,7 +3,7 @@ import { IonicPage, NavController }        from 'ionic-angular';
 import { Item }                            from '../../models/item';
 import { Api }                             from '../../providers/api/api';
 import { Storage }                         from '@ionic/storage';
-import { LoadingController }               from 'ionic-angular';
+import { ModalController }               from 'ionic-angular';
 /**
  * params = [
  *      'method',           // request type
@@ -29,7 +29,7 @@ export class OrderListPage {
         public navCtrl: NavController,
         public api: Api,
         private storage: Storage,
-        public loadingCtrl: LoadingController) {
+        public loadingCtrl: ModalController) {
         
             this.storage.get('user').then(val => {
                 this.user = val;
@@ -59,11 +59,11 @@ export class OrderListPage {
         this.navCtrl.push('ProfilePage');
     }
 
-    presentLoading() {
-        let loader = this.loadingCtrl.create({
-            content: "Please wait...",
-            duration: 3000
+    /*openModal() {
+        let modal = this.modalCtrl.create(Profile, { userId: 8675309 });
+        modal.onDidDismiss(data => {
+            console.log(data);
         });
-        loader.present();
-    }
+        modal.present();
+    }*/
 }
