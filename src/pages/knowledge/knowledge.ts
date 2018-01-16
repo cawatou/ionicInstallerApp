@@ -17,8 +17,8 @@ export class KnowledgePage {
             .subscribe(data => this.items = data.json());
     }
 
-    openMain() {
-        this.navCtrl.push('MainPage');
+    openPage(page){
+        this.navCtrl.setRoot(page);
     }
 
 }

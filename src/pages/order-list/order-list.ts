@@ -51,14 +51,10 @@ export class OrderListPage {
         });
     }
 
-    openMain() {
-        this.navCtrl.push('MainPage');
+    openPage(page){
+        this.navCtrl.setRoot(page);
     }
-
-    openProfile() {
-        this.navCtrl.push('ProfilePage');
-    }
-
+    
     /*openModal() {
         let modal = this.modalCtrl.create(Profile, { userId: 8675309 });
         modal.onDidDismiss(data => {

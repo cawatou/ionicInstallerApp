@@ -17,9 +17,8 @@ export class ContractPage {
             .subscribe(data => this.contracts = data.json());
     }
 
-
-    openMain() {
-        this.navCtrl.push('MainPage');
+    openPage(page){
+        this.navCtrl.setRoot(page);
     }
 
 }

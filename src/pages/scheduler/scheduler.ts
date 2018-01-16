@@ -24,17 +24,13 @@ export class SchedulerPage {
         });
     }
 
-    openProfile() {
-        this.navCtrl.push('ProfilePage');
+    openPage(page){
+        this.navCtrl.setRoot(page);
     }
 
     openMap(items) {
         this.navCtrl.push('MapPage', {
             items: items
         });
-    }
-
-    openMain() {
-        this.navCtrl.push('MainPage');
     }
 }

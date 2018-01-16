@@ -22,27 +22,8 @@ export class MainPage {
                 console.log(this.user);
             });
     }
-
-
-
-
-    openContract() {
-        this.navCtrl.push('ContractPage');
-    }
-
-    openKnowledge() {
-        this.navCtrl.push('KnowledgePage');
-    }
-
-    openOffer() {
-        this.navCtrl.push('OfferPage');
-    }
-
-    openScheduler() {
-        this.navCtrl.push('SchedulerPage');
-    }
-
-    openOrderList() {
-        this.navCtrl.push('OrderListPage');
+    
+    openPage(page){
+        this.navCtrl.setRoot(page);
     }
 }
