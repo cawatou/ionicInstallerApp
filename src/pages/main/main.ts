@@ -11,15 +11,14 @@ import { Api }                         from "../../providers/api/api";
 })
 export class MainPage {
     params: any;
-    user: any;
+    master: any;
 
     constructor(
         public navCtrl: NavController,
         public api: Api,
         private storage: Storage) {
             this.storage.get('user').then(val => {
-                this.user = val;
-                console.log(this.user);
+                this.master = val.Master; 
             });
     }
     

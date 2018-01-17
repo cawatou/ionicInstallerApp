@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="anm w">
-        <div class="item item1" *ngFor="let item of items" ion-item (click)="openDetail(item)">
+        <div class="item item1" *ngFor="let item of items"  ion-item (click)="openDetail(item)">
             <div class="left">
                 <div class="t1">{{ item.Malfunctions }}</div>
                 <div class="t2">{{ item.Address }}</div>
@@ -29,14 +29,11 @@
             </div>
             <div class="right">
                 <div class="number">№ {{ item.ID }}</div>
-                <div class="icon i1"></div>
+                <div class="icon i1" ion-item (click)="schedulerModal(item.ID)"></div>
             </div>
         </div>
     </div>
-    <ion-item>
-        <ion-label>Date</ion-label>
-        <ion-datetime displayFormat="DD.MM.YYYY HH-mm-ss" [(ngModel)]="myDate"></ion-datetime>
-    </ion-item>
+
     <footer class="footer w">
         <div class="item" ion-item (click)="openPage('ProfilePage')">
             <div class="icon i1"></div>

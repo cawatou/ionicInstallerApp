@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Добавление заявки в планировщик</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form (submit)="remains_submit()">
+        <div class="popup pop3" id="pop3">
+            <div class="w">
+                <ion-item>
+                    <ion-label>Начало выполнения</ion-label>
+                    <ion-datetime displayFormat="DD.MM.YYYY HH-mm-ss" ></ion-datetime>
+                </ion-item>
+            </div>
+
+            <div class="w">
+                <ion-item>
+                    <ion-label>Конец выполнения</ion-label>
+                    <ion-datetime displayFormat="DD.MM.YYYY HH-mm-ss"></ion-datetime>
+                </ion-item>
+            </div>
+            <button class="button b3m w">Добавить {{ id }}</button>
+        </div>
+    </form>
+</ion-content>

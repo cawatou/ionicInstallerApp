@@ -1,9 +1,9 @@
-import { Component }                       from '@angular/core';
-import { IonicPage, NavController }        from 'ionic-angular';
-import { Item }                            from '../../models/item';
-import { Api }                             from '../../providers/api/api';
-import { Storage }                         from '@ionic/storage';
-import { ModalController }               from 'ionic-angular';
+import { Component }                                    from '@angular/core';
+import { IonicPage, NavController, ModalController }    from 'ionic-angular';
+import { Item }                                         from '../../models/item';
+import { Api }                                          from '../../providers/api/api';
+import { Storage }                                      from '@ionic/storage';
+
 /**
  * params = [
  *      'method',           // request type
@@ -29,7 +29,7 @@ export class OrderListPage {
         public navCtrl: NavController,
         public api: Api,
         private storage: Storage,
-        public loadingCtrl: ModalController) {
+        public modalCtrl: ModalController) {
         
             this.storage.get('user').then(val => {
                 this.user = val;
@@ -54,12 +54,14 @@ export class OrderListPage {
     openPage(page){
         this.navCtrl.setRoot(page);
     }
-    
-    /*openModal() {
-        let modal = this.modalCtrl.create(Profile, { userId: 8675309 });
-        modal.onDidDismiss(data => {
-            console.log(data);
-        });
+
+    schedulerModal(id) {
+        console.log('id: ', id);
+        let modal = this.modalCtrl.create('ModalSchedulerPage', { id: id });
         modal.present();
-    }*/
+
+        /*modal.onDidDismiss(data => {
+            console.log(data, 'dfdas');
+        });*/
+    }
 }
