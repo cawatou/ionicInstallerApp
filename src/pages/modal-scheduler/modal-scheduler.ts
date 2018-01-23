@@ -9,11 +9,12 @@ import { Storage }                                                      from '@i
     templateUrl: 'modal-scheduler.html'
 })
 export class ModalSchedulerPage {
-    remains: any;
+    task:{ date_begin: string, date_end: string, id: string } = {
+        date_begin: '',
+        date_end: '',
+        id: ''
+    };
     user: any;
-    equip: {} = {};
-    select: {} = {};
-    input: {} = {};
 
     constructor(
         public navCtrl: NavController,
@@ -24,37 +25,30 @@ export class ModalSchedulerPage {
         private storage: Storage) {
 
         console.log('params.id: ', params.get('id'));
-
+        this.task.id = params.get('id');
 
         this.storage.get('user').then(val => {
             this.user = val;
-            let params = ['remains', this.user.Master];
-            this.api.get(params)
-                .subscribe(data => this.remains = data.json());
         });
     }
 
-    remains_submit(){
-       /* let equip_arr = [];
-        for (let key in this.select) {
-            if(this.input[key]) equip_arr.push({"Nomenclature": this.select[key],"Amount": this.input[key].toString()});
-        };
+    add_task(){
 
-        this.equip = "{"+JSON.stringify(equip_arr)+"}";
         let params;
         params = [
-            'order',                // api method
-            this.user.Master,       // master
-            this.equip              // equipment (json)
+            'AddScheduler',        // api method
+            this.task.date_begin,  // BeginDate
+            this.task.date_end,    // EndDate
+            this.task.id,          // RequestID
+            this.user.Master       // master
         ];
 
         console.log('params: ', params);
         this.api.get(params).subscribe(data => {
-            console.log(data);
+            console.log('api response: ', data);
         });
-        */
+
         this.viewCtrl.dismiss();
-        this.appCtrl.getRootNav().push('OrderActPage');
-        //this.navCtrl.push('OrderActPage');
+        this.appCtrl.getRootNav().push('SchedulerPage');
     }
 }
