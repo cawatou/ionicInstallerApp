@@ -2,6 +2,7 @@ import { Component }                                                    from '@a
 import { App, IonicPage, NavController, NavParams, ViewController }     from 'ionic-angular';
 import { Api }                                                          from '../../providers/api/api';
 import { Storage }                                                      from '@ionic/storage';
+import * as moment                                                      from "moment";
 
 @IonicPage()
 @Component({
@@ -33,8 +34,10 @@ export class ModalSchedulerPage {
     }
 
     add_task(){
-
         let params;
+        this.task.date_begin = moment(this.task.date_begin).format("DD.MM.YYYY HH:mm:ss");
+        this.task.date_end = moment(this.task.date_end).format("DD.MM.YYYY HH:mm:ss");
+
         params = [
             'AddScheduler',        // api method
             this.task.date_begin,  // BeginDate

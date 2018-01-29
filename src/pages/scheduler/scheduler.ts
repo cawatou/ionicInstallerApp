@@ -3,7 +3,7 @@ import {Storage}                    from '@ionic/storage';
 import {IonicPage, NavController}   from 'ionic-angular';
 import {Item}                       from '../../models/item';
 import {Api}                        from "../../providers/api/api";
-
+import * as moment                  from "moment";
 
 @IonicPage()
 @Component({
@@ -11,17 +11,19 @@ import {Api}                        from "../../providers/api/api";
     templateUrl: 'scheduler.html'
 })
 export class SchedulerPage {
-    items:Item[];
+    tasks:any;
     params:any;
     user:any;
 
     constructor(public navCtrl:NavController, public api:Api, private storage:Storage) {
         this.storage.get('user').then(val => {
             this.user = val;
-            this.params = ['requests', '0', this.user.Master, '1', '3'];
+            this.params = ['GetScheduler', '01.01.2018 0:00:00', '01.01.2019 0:00:00', this.user.Master];
             this.api.get(this.params)
-                .subscribe(data => this.items = data.json());
+                .subscribe(data => this.tasks = data.json());
         });
+
+        console.log(moment.locale(), this.tasks);
     }
 
     openPage(page){
