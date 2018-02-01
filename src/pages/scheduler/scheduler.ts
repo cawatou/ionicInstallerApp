@@ -1,7 +1,6 @@
 import {Component}                  from '@angular/core';
 import {Storage}                    from '@ionic/storage';
 import {IonicPage, NavController}   from 'ionic-angular';
-import {Item}                       from '../../models/item';
 import {Api}                        from "../../providers/api/api";
 import * as moment                  from "moment";
 
@@ -14,16 +13,22 @@ export class SchedulerPage {
     tasks:any;
     params:any;
     user:any;
+    startDay:any;
+    endDay: any;
 
     constructor(public navCtrl:NavController, public api:Api, private storage:Storage) {
+        this.startDay = moment().startOf('day').format('DD.MM.YYYY HH:mm:ss');
+        this.endDay = moment().endOf('day').format('DD.MM.YYYY HH:mm:ss');
+
         this.storage.get('user').then(val => {
             this.user = val;
-            this.params = ['GetScheduler', '01.01.2018 0:00:00', '01.01.2019 0:00:00', this.user.Master];
+            this.params = ['GetScheduler', this.startDay, this.endDay, this.user.Master];
             this.api.get(this.params)
-                .subscribe(data => this.tasks = data.json());
-        });
-
-        console.log(moment.locale(), this.tasks);
+                .subscribe(data =>  {
+                    this.tasks = data.json();
+                    console.log(this.tasks);
+                })
+        })
     }
 
     openPage(page){
