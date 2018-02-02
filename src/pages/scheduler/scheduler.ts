@@ -25,7 +25,10 @@ export class SchedulerPage {
             this.params = ['GetScheduler', this.startDay, this.endDay, this.user.Master];
             this.api.get(this.params)
                 .subscribe(data =>  {
-                    this.tasks = data.json();
+                    this.tasks =  data.json();
+                    for(var key in this.tasks){
+                        this.tasks[key].hide = true;
+                    }
                     console.log(this.tasks);
                 })
         })
@@ -39,5 +42,12 @@ export class SchedulerPage {
         this.navCtrl.push('MapPage', {
             items: items
         });
+    }
+
+    showItem(id){
+        for(var key in this.tasks){
+            if(this.tasks[key].RequestID == id) this.tasks[key].hide = false;
+            else this.tasks[key].hide = true;
+        }
     }
 }

@@ -8,15 +8,16 @@
         <a class="button" href="#">21.10</a>
     </div>
     <div class="plan w">
-        <div class="item  busy" *ngFor="let task of tasks">
-            {{ task.BeginDate }} - {{ task.EndDate }} {{ task.RequestComments }}
+        <div class="item  busy" *ngFor="let task of tasks" (click)="showItem(task.RequestID)">
+            {{ task.BeginDate }} - {{ task.EndDate }} {{ task.Malfunctions }}
         </div>
     </div>
     <div class="anm w">
-        <div class="item item1">
+
+        <div class="item item1" *ngFor="let task of tasks" [hidden]=task.hide >
             <div class="left">
-                <div class="t1">Укладка ламината</div>
-                <div class="t2">ул. Пушкина 77, кв. 27</div>
+                <div class="t1">{{ task.RequestComments }}</div>
+                <div class="t2">address</div>
                 <div class="t3"> <i class="alarm"></i>
                     <div><b>00:35:15</b> до рекомендуемого срока</div>
                 </div>
@@ -28,10 +29,11 @@
                 </div>
             </div>
             <div class="right">
-                <div class="number">№ 15436</div>
+                <div class="number">№ {{ task.RequestID }}</div>
                 <div class="icon i1"></div>
             </div>
         </div>
+
     </div>
     <footer class="footer f2 w">
         <div class="item" (click)="openPage('ProfilePage')">
