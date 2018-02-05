@@ -3,9 +3,9 @@
         <div>Планировщик</div>
     </div>
     <div class="anm-time w">
-        <a class="button active" href="#">19.10</a>
-        <a class="button" href="#">20.10</a>
-        <a class="button" href="#">21.10</a>
+        <a class="button active" (click)="getTasks(fdate)">{{ fdate }}</a>
+        <a class="button" (click)="getTasks(sdate)">{{ sdate }}</a>
+        <a class="button" (click)="getTasks(tdate)">{{ tdate }}</a>
     </div>
     <div class="plan w">
         <div class="item  busy" *ngFor="let task of tasks" (click)="showItem(task.RequestID)">
