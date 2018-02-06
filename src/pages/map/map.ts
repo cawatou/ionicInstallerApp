@@ -1,6 +1,7 @@
 import { Component }                              from '@angular/core';
 import { IonicPage, NavController, NavParams }    from 'ionic-angular';
 import { Api }                                    from "../../providers/api/api";
+import { Storage }                                from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -10,29 +11,48 @@ import { Api }                                    from "../../providers/api/api"
 export class MapPage {
     items: any;
     markers: any[];
-
+    params: any;
+    user: any;
     markerObjects : any;
 
-    constructor(public navCtrl:NavController, public navParams:NavParams, public api:Api) {
-        this.items = navParams.get('items');
+    constructor(
+        public navCtrl:NavController,
+        public api:Api,
+        private storage: Storage ) {
 
-        //console.log(this.items);
-        let features = new Array<any>();
-        for (var i = 0; i < this.items.length; i++) {
-            this.api.getMapCoord(this.items[i].Address)
-                .subscribe(data => {
-                    let res = data.json().response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
-                    let lon = res[0];
-                    let lat = res[1];
-                    features.push(this.getFeature(lat, lon));
-                });
-        }
+        var tt;
 
-        this.markerObjects = {
-            "type": "FeatureCollection",
-            "features": features
-        };
+        this.storage.get('user').then(val => {
+            this.user = val;
+            this.params = ['requests', '0', this.user.Master, '1', '3'];
+            this.api.get(this.params).subscribe(data => {
+                this.items = data.json();
+                console.log(this.items);
+                let features = [];
+                for (var i = 0; i < this.items.length; i++) {
+                    this.api.getMapCoord(this.items[i].Address)
+                        .subscribe(data => {
+                            console.log(data);
 
+                            // let res = data.json().response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
+                            // let lon = res[0];
+                            // let lat = res[1];
+                            // features.push(this.getFeature(lat, lon));
+                        });
+                }
+
+                // console.log(features);
+                //
+                // this.markerObjects = {
+                //     "type": "FeatureCollection",
+                //     "features": features
+                // };
+
+            })
+        })
+
+       /*
+*/
 
     }
 

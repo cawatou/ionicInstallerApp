@@ -25,7 +25,8 @@ export class Api {
     }
 
     getMapCoord(address?:any, options?:RequestOptions) {
-        this.url = 'https://geocode-maps.yandex.ru/1.x/?format=json&geocode='+ address + '&results=1';
+        //this.url = 'https://geocode-maps.yandex.ru/1.x/?format=json&geocode='+ address + '&results=1';
+        this.url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key=AIzaSyARNKILWOLm83HD1EDxTrVV0tjAhkCzHC8';
         if (!options) {
             options = new RequestOptions();
         }

@@ -31,23 +31,17 @@ export class OrderListPage {
         private storage: Storage,
         public modalCtrl: ModalController) {
         
-            this.storage.get('user').then(val => {
-                this.user = val;
-                this.params = ['requests', '0', this.user.Master, '1', '3'];
-                this.api.get(this.params)
-                    .subscribe(data => this.items = data.json());
-            });
+        this.storage.get('user').then(val => {
+            this.user = val;
+            this.params = ['requests', '0', this.user.Master, '1', '3'];
+            this.api.get(this.params)
+                .subscribe(data => this.items = data.json());
+        });
     }
 
     openDetail(item) {
         this.navCtrl.push('OrderDetailPage', {
             item: item
-        });
-    }
-
-    openMap(items) {
-        this.navCtrl.push('MapPage', {
-            items: items
         });
     }
 
