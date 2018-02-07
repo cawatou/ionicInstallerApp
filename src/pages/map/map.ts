@@ -1,7 +1,8 @@
 import { Component, ViewChild, ElementRef }       from '@angular/core';
-import { IonicPage, NavController, Platform }     from 'ionic-angular';
+import { IonicPage, NavController }               from 'ionic-angular';
 import { Api }                                    from "../../providers/api/api";
 import { Storage }                                from '@ionic/storage';
+import * as moment                                from "moment";
 
 declare var google: any;
 
@@ -12,20 +13,17 @@ declare var google: any;
 })
 
 export class MapPage {
-    items: any;
-    markers: any[];
-    params: any;
-    user: any;
+    today:any;
 
     @ViewChild('mapCanvas') mapElement: ElementRef;
     constructor(public navCtrl:NavController, public api:Api, private storage: Storage ) {}
 
     ionViewDidLoad() {
         this.storage.get('user').then(val => {
-            this.user = val;
-            this.params = ['requests', '0', this.user.Master, '1', '3'];
-            this.api.get(this.params).subscribe(data => {
-                this.items = data.json();
+            let user = val;
+            let params = ['requests', '0', user.Master, '1', '3'];
+            this.api.get(params).subscribe(data => {
+                let items = data.json();
                 //console.log(this.items);
 
                 let mapEle = this.mapElement.nativeElement;
@@ -35,8 +33,8 @@ export class MapPage {
                     zoom: 11
                 });
 
-                for (var i = 0; i < this.items.length; i++) {
-                    this.api.getMapCoord(this.items[i].Address).subscribe(data => {
+                for (var i = 0; i < items.length; i++) {
+                    this.api.getMapCoord(items[i].Address).subscribe(data => {
                         let coord = data.json().results[0].geometry.location;
                         coord.name = data.json().results[0].formatted_address;
 
@@ -61,6 +59,9 @@ export class MapPage {
                 }
             })
         })
+
+        moment.lang('ru');
+        this.today = moment().format('DD MMMM');
     }
 
     openPage(page){
