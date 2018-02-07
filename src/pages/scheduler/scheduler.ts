@@ -15,8 +15,7 @@ export class SchedulerPage {
 
     constructor(public navCtrl:NavController, public api:Api, private storage:Storage) {
         let today = moment().format('DD.MM');
-        let month = moment(today, 'DD.MM').add(1, 'month').format('DD.MM');
-
+        
         for(let i = 0; ; i++){
             let date = moment(today, 'DD.MM').add(i, 'd').format('DD.MM');
             if(date == moment(today, 'DD.MM').add(1, 'month').format('DD.MM')) break;

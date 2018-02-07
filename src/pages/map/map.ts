@@ -21,10 +21,10 @@ export class MapPage {
     ionViewDidLoad() {
         this.storage.get('user').then(val => {
             let user = val;
-            let params = ['requests', '0', user.Master, '1', '3'];
+            let params = ['requests', '0', user.Master, '1', '20'];
             this.api.get(params).subscribe(data => {
                 let items = data.json();
-                //console.log(this.items);
+                console.log(items);
 
                 let mapEle = this.mapElement.nativeElement;
 
@@ -60,7 +60,7 @@ export class MapPage {
             })
         })
 
-        moment.lang('ru');
+        moment.locale('ru');
         this.today = moment().format('DD MMMM');
     }
 
