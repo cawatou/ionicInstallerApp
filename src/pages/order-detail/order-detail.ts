@@ -1,18 +1,22 @@
-import {Component}                              from '@angular/core';
-import {IonicPage, NavController, NavParams}    from 'ionic-angular';
+import {Component}                                               from '@angular/core';
+import {IonicPage, NavController, NavParams, ModalController}    from 'ionic-angular';
 
 @IonicPage()
 @Component({
     selector: 'page-order-detail',
     templateUrl: 'order-detail.html'
 })
+
 export class OrderDetailPage {
     item:any;
-    user:any;
 
-    constructor(public navCtrl:NavController, navParams:NavParams) {
+    constructor(
+        public navCtrl:NavController,
+        public navParams:NavParams,
+        public modalCtrl: ModalController) {
+
         this.item = navParams.get('item');
-       // this.user = navParams.get('user');
+        console.log(this.item);
     }
 
     ionViewDidLoad() {
@@ -30,5 +34,10 @@ export class OrderDetailPage {
             item: item,
             //user: user
         });
+    }
+
+    schedulerModal(id) {
+        let modal = this.modalCtrl.create('ModalSchedulerPage', { id: id });
+        modal.present();
     }
 }

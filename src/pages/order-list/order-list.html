@@ -13,9 +13,8 @@
         </div>
     </div>
     <div class="anm w">
-        <!--<div class="item item1" *ngFor="let item of items"  ion-item (click)="openDetail(item)">-->
         <div class="item item1" *ngFor="let item of items">
-            <div class="left">
+            <div class="left" (click)="openDetail(item)">
                 <div class="t1">{{ item.Malfunctions }}</div>
                 <div class="t2">{{ item.Address }}</div>
                 <div class="t3"><i class="alarm"></i>
@@ -28,9 +27,9 @@
                     <div class="icon i4"></div>
                 </div>
             </div>
-            <div class="right">
+            <div class="right" (click)="schedulerModal(item.ID)">
                 <div class="number">№ {{ item.ID }}</div>
-                <div class="icon i1" ion-item (click)="schedulerModal(item.ID)"></div>
+                <div class="icon i1"></div>
             </div>
         </div>
     </div>
