@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef }       from '@angular/core';
 import { IonicPage, NavController, NavParams }    from 'ionic-angular';
 import { Api }                                    from '../../providers/api/api';
+import { Storage }                                from '@ionic/storage';
 
 declare var google;
 
@@ -17,25 +18,27 @@ export class OrderMapPage {
     end: any;
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
-    item: any;
+    item: any = [];
     user: any;
 
     constructor(
         public navCtrl: NavController, 
-        public navParams: NavParams, 
+        public storage: Storage,
         public api: Api) {
 
-        this.item = navParams.get('item');
-        this.user = navParams.get('user');
     }
 
     ionViewDidLoad(){
-        this.api.getMapCoord(this.item.Address).subscribe(data => {
-            let coord = data.json().results[0].geometry.location;
-            coord.name = data.json().results[0].formatted_address;
-
-            console.log(coord);
+        this.storage.get('item').then(data => {
+            for(let key in data) this.item[key] = data[key];
+            this.api.getMapCoord(this.item.Address).subscribe(data => {
+                let coord = data.json().results[0].geometry.location;
+                coord.name = data.json().results[0].formatted_address;
+                
+                console.log(coord);
+            });
         });
+
     }
     
     openOrderDetail(item, user) {
