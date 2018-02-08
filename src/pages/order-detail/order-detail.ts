@@ -1,5 +1,6 @@
-import {Component}                                               from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController}    from 'ionic-angular';
+import {Component}                                    from '@angular/core';
+import {IonicPage, NavController, ModalController}    from 'ionic-angular';
+import { Storage }                                    from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -8,31 +9,18 @@ import {IonicPage, NavController, NavParams, ModalController}    from 'ionic-ang
 })
 
 export class OrderDetailPage {
-    item:any;
+    item:any = [];
 
     constructor(
         public navCtrl:NavController,
-        public navParams:NavParams,
+        public storage: Storage,
         public modalCtrl: ModalController) {
 
-        this.item = navParams.get('item');
-        console.log(this.item);
     }
 
     ionViewDidLoad() {
-    }
-
-    openOrderList(item, user) {
-        this.navCtrl.push('OrderListPage', {
-            item: item,
-            user: user
-        });
-    }
-
-    openOrderMap(item, user) {
-        this.navCtrl.push('OrderMapPage', {
-            item: item,
-            //user: user
+        this.storage.get('item').then(data => {
+            for(let key in data) this.item[key] = data[key];
         });
     }
 
@@ -40,4 +28,9 @@ export class OrderDetailPage {
         let modal = this.modalCtrl.create('ModalSchedulerPage', { id: id });
         modal.present();
     }
+
+    openPage(page){
+        this.navCtrl.setRoot(page);
+    }
+
 }

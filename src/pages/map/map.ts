@@ -19,8 +19,7 @@ export class MapPage {
     constructor(public navCtrl:NavController, public api:Api, private storage: Storage ) {}
 
     ionViewDidLoad() {
-        this.storage.get('user').then(val => {
-            let user = val;
+        this.storage.get('user').then(user => {
             let params = ['requests', '0', user.Master, '1', '20'];
             this.api.get(params).subscribe(data => {
                 let items = data.json();

@@ -40,9 +40,8 @@ export class OrderListPage {
     }
 
     openDetail(item) {
-        this.navCtrl.push('OrderDetailPage', {
-            item: item
-        });
+        this.storage.set('item', item);
+        this.openPage('OrderDetailPage');
     }
 
     openPage(page){

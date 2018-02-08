@@ -30,11 +30,9 @@ export class LoginPage {
             this.account.password    // pass
         ];
         this.api.get(this.params).subscribe(data => {
-            //console.log(data.json());
             this.user = data.json();
             this.storage.set('user', this.user);
             this.navCtrl.setRoot('MainPage');
-            //this.navCtrl.push('OrderListPage');
         });
     }
 
