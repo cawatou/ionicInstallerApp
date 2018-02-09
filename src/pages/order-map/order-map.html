@@ -4,15 +4,15 @@
     </div>
     <div class="aa-map w">
 
-        <div #map id="map"></div>
+        <div style="height: 100%; width: 100%" #map id="map"></div>
 
         <a class="button" href="#">
             <div class="icon"></div>
             <div class="text">СМС «Скоро приеду»</div>
         </a>
         <div class="aa6">
-            <a class="button1" ion-item (click)="openOrderDetail(item)"></a>
-            <a class="button3" ion-item (click)="openOrderConfirm(item)"></a>
+            <a class="button1" ion-item (click)="openPage('OrderDetailPage')"></a>
+            <a class="button3" ion-item (click)="openPage('OrderConfirmPage')"></a>
         </div>
     </div>
     <a class="button b3 w" href="tel:{{ item.ResidentPhone }}">

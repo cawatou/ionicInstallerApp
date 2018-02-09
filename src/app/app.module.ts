@@ -11,11 +11,7 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {Api}                                      from '../providers/api/api';
 import {MyApp}                                    from './app.component';
 import {Settings}                                 from '../providers/settings/settings';
-//import {Route}                                    from "../providers/route/route";
-
-import {GoogleMaps}                               from '@ionic-native/google-maps';
-
-
+import {Geolocation}                              from "@ionic-native/geolocation";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -61,9 +57,8 @@ export function provideSettings(storage:Storage) {
     ],
     providers: [
         Api,
-        //Route,
+        Geolocation,
         Camera,
-        GoogleMaps,
         SplashScreen,
         StatusBar,
         {provide: Settings, useFactory: provideSettings, deps: [Storage]},
