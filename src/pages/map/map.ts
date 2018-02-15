@@ -34,26 +34,29 @@ export class MapPage {
 
                 for (var i = 0; i < items.length; i++) {
                     this.api.getMapCoord(items[i].Address).subscribe(data => {
-                        let coord = data.json().results[0].geometry.location;
-                        coord.name = data.json().results[0].formatted_address;
+                        let res = data.json();
+                        if(res.status == 'OK'){
+                            let coord = res.results[0].geometry.location;
+                            coord.name = res.results[0].formatted_address;
 
-                        let infoWindow = new google.maps.InfoWindow({
-                            content: `<h5>${coord.name}</h5>`
-                        });
+                            let infoWindow = new google.maps.InfoWindow({
+                                content: `<h5>${coord.name}</h5>`
+                            });
 
-                        let marker = new google.maps.Marker({
-                            position: coord,
-                            map: map,
-                            title: coord.name
-                        });
+                            let marker = new google.maps.Marker({
+                                position: coord,
+                                map: map,
+                                title: coord.name
+                            });
 
-                        marker.addListener('click', () => {
-                            infoWindow.open(map, marker);
-                        });
+                            marker.addListener('click', () => {
+                                infoWindow.open(map, marker);
+                            });
 
-                        google.maps.event.addListenerOnce(map, 'idle', () => {
-                            mapEle.classList.add('show-map');
-                        });
+                            google.maps.event.addListenerOnce(map, 'idle', () => {
+                                mapEle.classList.add('show-map');
+                            });
+                        }
                     });
                 }
             })
