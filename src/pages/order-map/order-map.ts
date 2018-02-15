@@ -4,7 +4,7 @@ import { Api }                                    from '../../providers/api/api'
 import { Storage }                                from '@ionic/storage';
 import { Geolocation }                            from '@ionic-native/geolocation';
 
-declare var google;
+declare var google: any;
 
 @IonicPage()
 @Component({

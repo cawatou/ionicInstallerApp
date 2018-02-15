@@ -26,8 +26,10 @@ export class LoginPage {
         //console.log(this.account);
         this.params = [
             'autorization',          // api method
-            this.account.username,   // login
-            this.account.password    // pass
+            'frid',
+            'fridtest'
+            // this.account.username,   // login
+            // this.account.password    // pass
         ];
         this.api.get(this.params).subscribe(data => {
             this.user = data.json();
