@@ -33,7 +33,7 @@ export class OrderListPage {
     ionViewDidLoad() {
         this.presentLoading();
         this.storage.get('user').then(user => {
-            let params = ['requests', '0', user.Master, '1', '3'];
+            let params = ['requests', '0', user.Master, '1', '6'];
             this.api.get(params)
                 .subscribe(data => this.items = data.json());
         });
@@ -55,7 +55,7 @@ export class OrderListPage {
 
     presentLoading() {
         let loader = this.loadingCtrl.create({
-            content: "Please wait...",
+            content: "Пожалуйста подождите",
             duration: 2000
         });
         loader.present();

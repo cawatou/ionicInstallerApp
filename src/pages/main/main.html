@@ -25,7 +25,7 @@
     </div>
     <div class="request r1 w">
         <a class="button" (click)="openPage('OrderListPage')">
-            <div>Заявок на сегодня: 10</div>
+            <div>Заявок на сегодня: {{ count }}</div>
         </a>
     </div>
     <button class="button w" (click)="openPage('OrderListPage')">Начать работу</button>
@@ -33,8 +33,8 @@
     <div style="display: none;" class="popup pop2" id="pop2">
         <div class="t1">Вы начали рабочий день в</div>
         <div class="t2">09:15</div>
-        <div class="t1">заявок на сегодня:</div>
-        <div class="t2">23</div>
+        <div class="t1">заявок на сегодня: </div>
+        <div class="t2">{{ count }}</div>
         <button class="button">Перейти к заявкам</button>
     </div>
 </ion-content>
