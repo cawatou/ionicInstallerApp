@@ -1,8 +1,8 @@
-import { Component, ViewChild, ElementRef }       from '@angular/core';
-import { IonicPage, NavController }               from 'ionic-angular';
-import { Api }                                    from "../../providers/api/api";
-import { Storage }                                from '@ionic/storage';
-import * as moment                                from "moment";
+import { Component, ViewChild, ElementRef }            from '@angular/core';
+import { IonicPage, NavController, LoadingController } from 'ionic-angular';
+import { Api }                                         from "../../providers/api/api";
+import { Storage }                                     from '@ionic/storage';
+import * as moment                                     from "moment";
 
 declare var google: any;
 
@@ -16,9 +16,14 @@ export class MapPage {
     today:any;
 
     @ViewChild('mapCanvas') mapElement: ElementRef;
-    constructor(public navCtrl:NavController, public api:Api, private storage: Storage ) {}
+    constructor(
+        public navCtrl:NavController,
+        public api:Api,
+        public loadingCtrl: LoadingController,
+        private storage: Storage ) {}
 
     ionViewDidLoad() {
+        this.presentLoading();
         this.storage.get('user').then(user => {
             let params = ['requests', '0', user.Master, '1', '20'];
             this.api.get(params).subscribe(data => {
@@ -68,5 +73,13 @@ export class MapPage {
 
     openPage(page){
         this.navCtrl.setRoot(page);
+    }
+
+    presentLoading() {
+        let loader = this.loadingCtrl.create({
+            content: "Пожалуйста подождите",
+            duration: 3000
+        });
+        loader.present();
     }
 }

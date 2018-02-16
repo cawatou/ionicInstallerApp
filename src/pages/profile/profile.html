@@ -2,32 +2,37 @@
     <div class="header">
         <div>Профиль</div>
     </div>
-    <div class="profile-img w"> <img src="img/pr-img.jpg">
+    <div class="profile-img w"><img src="assets/html/img/pr-img.jpg">
         <div class="photo-icon"></div>
     </div>
     <div class="profile-ul w">
         <ul>
-            <li> <a href="#">Личные данные</a>
-                <div class="hidden">
+            <li>
+                <a class="active"></a>
+            </li>
+            <li>
+                <a [hidden]=hidden.index [ngClass]="(hidden.index === true) ? 'active' : ''" (click)="showItem('user')">Личные данные</a>
+                <div [hidden]=hidden.user>
                     <div class="form aa-form w">
                         <div class="sofi">
                             <div class="text">Имя</div>
-                            <input type="text" placeholder="" value="Владимир"> </div>
+                            <input type="text" placeholder="" value="{{ user.LastName }}"></div>
                         <div class="sofi">
                             <div class="text">Фамилия</div>
-                            <input type="text" placeholder="" value="Иванов"> </div>
+                            <input type="text" placeholder="" value="{{ user.Name }}"></div>
                     </div>
                 </div>
             </li>
-            <li> <a href="#">Просроченные заявки</a>
-                <div class="hidden">
+            <li>
+                <a [hidden]=hidden.index [ngClass]="(hidden.index === true) ? 'active' : ''" (click)="showItem('overdue')">Текущие заявки</a>
+                <div [hidden]=hidden.overdue>
                     <div class="anm w">
-                        <div class="item item1">
-                            <div class="left">
-                                <div class="t1">Укладка ламината</div>
-                                <div class="t2">ул. Пушкина 77, кв. 27</div>
-                                <div class="t3"> <i class="alarm"></i>
-                                    <div><b>00:35:15</b> до рекомендуемого срока</div>
+                        <div class="item item1" *ngFor="let item of items">
+                            <div class="left" (click)="openDetail(item)">
+                                <div class="t1">{{ item.Malfunctions }}</div>
+                                <div class="t2">{{ item.Address }}</div>
+                                <div class="t3"><i class="alarm"></i>
+                                    <div><b>{{ item.RecommendDate }}</b> до рекомендуемого срока</div>
                                 </div>
                                 <div class="icons">
                                     <div class="icon i1"></div>
@@ -36,90 +41,29 @@
                                     <div class="icon i4"></div>
                                 </div>
                             </div>
-                            <div class="right">
-                                <div class="number">№ 15436</div>
+                            <div class="right" (click)="schedulerModal(item.ID)">
+                                <div class="number">№ {{ item.ID }}</div>
                                 <div class="icon i1"></div>
                             </div>
                         </div>
-                        <div class="item item2">
-                            <div class="left">
-                                <div class="t1">Укладка ламината</div>
-                                <div class="t2">ул. Есенина 15, кв. 2191</div>
-                                <div class="t3">
-                                    <div><b>02:15:15</b> до рекомендуемого срока</div>
-                                </div>
-                                <div class="icons">
-                                    <div class="icon i2"></div>
-                                    <div class="icon i3"></div>
-                                    <div class="icon i4"></div>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div class="number">№ 15500</div>
-                                <div class="icon i2"></div>
-                            </div>
-                        </div>
-                        <div class="item item3">
-                            <div class="left">
-                                <div class="t1">Установка камеры</div>
-                                <div class="t2">ул. Пушкина 77, кв. 27</div>
-                                <div class="t3"> <i class="alarm"></i>
-                                    <div><b>02:50:15</b> до рекомендуемого срока</div>
-                                </div>
-                                <div class="icons">
-                                    <div class="icon i2"></div>
-                                    <div class="icon i3"></div>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div class="number">№ 15436</div>
-                                <div class="icon i3"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </li>
-            <li> <a href="#">баланс оборудования</a>
-                <div class="hidden">
+            <li>
+                <a [hidden]=hidden.index [ngClass]="(hidden.index === true) ? 'active' : ''" (click)="showItem('remains')">баланс оборудования</a>
+                <div  [hidden]=hidden.remains>
                     <div class="eq1 w">
-                        <div class="w">
-                            <div>Кронштейн</div>
-                            <div>2 шт.</div>
-                        </div>
-                        <div class="w">
-                            <div>Болт</div>
-                            <div>150 шт.</div>
-                        </div>
-                        <div class="w">
-                            <div>Гайка</div>
-                            <div>200 шт.</div>
-                        </div>
-                        <div class="w">
-                            <div>Шайба</div>
-                            <div>175 шт.</div>
-                        </div>
-                        <div class="w">
-                            <div>Кабель</div>
-                            <div>50 метров</div>
-                        </div>
-                        <div class="w">
-                            <div>Доводчик</div>
-                            <div>13 шт.</div>
-                        </div>
-                        <div class="w">
-                            <div>Домофонная трубка</div>
-                            <div>5 шт.</div>
-                        </div>
-                        <div class="w">
-                            <div>Домофон</div>
-                            <div>2 шт.</div>
+                        <div class="w" *ngFor="let remain of remains">
+                            <div>{{ remain.Nomenclature }}</div>
+                            <div>{{ remain.Amount }} шт.</div>
                         </div>
                     </div>
                 </div>
             </li>
-            <li> <a href="#">Оборудование в заказе</a>
-                <div class="hidden">
-                    <div class="eq-title"> Доставка 10.04.17, track code 93833 </div>
+            <li>
+                <a [hidden]=hidden.index [ngClass]="(hidden.index === true) ? 'active' : ''" (click)="showItem('equip')">Оборудование в заказе</a>
+                <div  [hidden]=hidden.equip>
+                    <div class="eq-title"> Доставка 10.04.17, track code 93833</div>
                     <div class="eq1 w">
                         <div class="w">
                             <div>Кронштейн</div>
@@ -161,11 +105,12 @@
                 </div>
             </li>
         </ul>
+
         <div class="hidden2">
             <div class="form aa-form w">
                 <div class="sofi">
                     <div class="text">Адрес доставки</div>
-                    <input type="text" placeholder="Введите адрес доставки" value=""> </div>
+                    <input type="text" placeholder="Введите адрес доставки" value=""></div>
             </div>
             <div class="add-eq w">
                 <div class="w">
@@ -178,7 +123,7 @@
                         </select>
                     </div>
                     <div class="number-plus-minus">
-                        <input value="2" type="number" /> </div>
+                        <input value="2" type="number"/></div>
                 </div>
                 <div class="w">
                     <div class="select">
@@ -190,7 +135,7 @@
                         </select>
                     </div>
                     <div class="number-plus-minus">
-                        <input value="2" type="number" /> </div>
+                        <input value="2" type="number"/></div>
                 </div>
                 <div class="w">
                     <div class="select">
@@ -202,7 +147,7 @@
                         </select>
                     </div>
                     <div class="number-plus-minus">
-                        <input value="2" type="number" /> </div>
+                        <input value="2" type="number"/></div>
                 </div>
                 <div class="w">
                     <div class="select">
@@ -214,7 +159,7 @@
                         </select>
                     </div>
                     <div class="number-plus-minus">
-                        <input value="2" type="number" /> </div>
+                        <input value="2" type="number"/></div>
                 </div>
                 <div class="w">
                     <div class="select">
@@ -223,7 +168,7 @@
                         </select>
                     </div>
                     <div class="number-plus-minus">
-                        <input value="" type="number" /> </div>
+                        <input value="" type="number"/></div>
                 </div>
                 <div class="w">
                     <div class="select">
@@ -232,7 +177,7 @@
                         </select>
                     </div>
                     <div class="number-plus-minus">
-                        <input value="" type="number" /> </div>
+                        <input value="" type="number"/></div>
                 </div>
             </div>
             <div class="answer">
@@ -241,6 +186,9 @@
             </div>
             <button class="button w" href="#">заказать</button>
         </div>
+    </div>
+    <div class="aa6">
+        <a class="button1" [hidden]=!hidden.index (click)="showItem('index')"></a>
     </div>
     <footer class="footer f2 w">
         <div class="item active">
@@ -251,7 +199,7 @@
             <div class="icon i4"></div>
             <div class="text">планировщик</div>
         </div>
-        <div class="item" ion-item (click)="openMap(items)">
+        <div class="item" ion-item (click)="openPage('MapPage')">
             <div class="icon i2"></div>
             <div class="text">Карта</div>
         </div>
