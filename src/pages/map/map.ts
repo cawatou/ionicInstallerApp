@@ -38,14 +38,18 @@ export class MapPage {
                 });
 
                 for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
                     this.api.getMapCoord(items[i].Address).subscribe(data => {
                         let res = data.json();
                         if(res.status == 'OK'){
                             let coord = res.results[0].geometry.location;
                             coord.name = res.results[0].formatted_address;
 
+
+                            let infoWindowContent = `<h5>${coord.name}</h5>`;
+
                             let infoWindow = new google.maps.InfoWindow({
-                                content: `<h5>${coord.name}</h5>`
+                                content: infoWindowContent
                             });
 
                             let marker = new google.maps.Marker({
@@ -55,7 +59,9 @@ export class MapPage {
                             });
 
                             marker.addListener('click', () => {
-                                infoWindow.open(map, marker);
+                                //infoWindow.open(map, marker);
+                                this.storage.set('item', item);
+                                this.openPage('OrderDetailPage');
                             });
 
                             google.maps.event.addListenerOnce(map, 'idle', () => {

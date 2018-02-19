@@ -2,8 +2,6 @@ import { Component }                              from '@angular/core';
 import { Storage }                                from '@ionic/storage';
 import { IonicPage, NavController }               from 'ionic-angular';
 import { Api }                                    from "../../providers/api/api";
-import { Item }                                   from '../../models/item';
-
 
 @IonicPage()
 @Component({
