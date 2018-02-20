@@ -1,7 +1,7 @@
-import { Component }           from '@angular/core';
-import { ModalController, NavParams, NavController, IonicPage }     from 'ionic-angular';
-//import { Api }                                                                      from '../../providers/api/api';
-//import { Storage }                                                                  from '@ionic/storage';
+import { Component }                                    from '@angular/core';
+import { ModalController, NavController, IonicPage }    from 'ionic-angular';
+import { Storage }                                      from '@ionic/storage';
+//import { Api }                                                                   from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -10,18 +10,20 @@ import { ModalController, NavParams, NavController, IonicPage }     from 'ionic-
 })
 
 export class OrderConfirmPage {
-    item: any;
+    item:any = [];
     user: any;
 
     constructor(
         public navCtrl: NavController,
-        public navParams: NavParams,
+        public storage: Storage,
         private modalCtrl: ModalController) {
 
-            //this.item = navParams.get('item');
-            this.item = {
-                Address: 'address'
-            };
+    }
+
+    ionViewDidLoad() {
+        this.storage.get('item').then(data => {
+            for(let key in data) this.item[key] = data[key];
+        });
     }
 
     openModal() {
@@ -29,11 +31,8 @@ export class OrderConfirmPage {
         modal.present();
     }
 
-    openOrderDetail(item, user) {
-        this.navCtrl.push('OrderDetailPage', {
-            item: item,
-            user: user
-        });
+    openPage(page){
+        this.navCtrl.setRoot(page);
     }
 }
 

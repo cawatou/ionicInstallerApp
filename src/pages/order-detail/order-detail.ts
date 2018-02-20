@@ -22,6 +22,7 @@ export class OrderDetailPage {
         this.storage.get('item').then(data => {
             for(let key in data) this.item[key] = data[key];
         });
+        console.log(this.item);
     }
 
     schedulerModal(id) {
@@ -32,5 +33,4 @@ export class OrderDetailPage {
     openPage(page){
         this.navCtrl.setRoot(page);
     }
-
 }

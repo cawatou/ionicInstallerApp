@@ -14,4 +14,5 @@ import { ModalRemainsPage }   from './modal-remains';
     ]
 })
 export class ModalRemainsPageModule {
+    
 }
