@@ -20,13 +20,21 @@ export class ProfilePage {
         equip: true
     };
 
+    avatar: any;
+
+
     constructor(public navCtrl: NavController, public api: Api, private storage: Storage) {
 
     }
 
     ionViewDidLoad() {
         this.storage.get('user').then(data => {
+            console.log(data);
+
             for(let key in data) this.user[key] = data[key];
+
+             this.avatar = 'data:image/jpeg;base64,' + data.Avatar;
+             console.log(this.avatar);
 
             this.api.get(['requests', '0', this.user.Master, '1', '6'])
                 .subscribe(data => this.items = data.json());
