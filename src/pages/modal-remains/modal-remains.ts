@@ -31,7 +31,7 @@ export class ModalRemainsPage {
     }
 
     remains_submit(){
-       /* let equip_arr = [];
+        let equip_arr = [];
         for (let key in this.select) {
             if(this.input[key]) equip_arr.push({"Nomenclature": this.select[key],"Amount": this.input[key].toString()});
         };
@@ -48,7 +48,6 @@ export class ModalRemainsPage {
         this.api.get(params).subscribe(data => {
             console.log(data);
         });
-        */
         this.viewCtrl.dismiss();
         this.appCtrl.getRootNav().push('OrderActPage');
         //this.navCtrl.push('OrderActPage');
