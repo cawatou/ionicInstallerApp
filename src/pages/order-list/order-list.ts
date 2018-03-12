@@ -3,6 +3,7 @@ import { IonicPage , LoadingController }        from 'ionic-angular';
 import { NavController, ModalController }       from 'ionic-angular';
 import { Api }                                  from '../../providers/api/api';
 import { Storage }                              from '@ionic/storage';
+import * as moment                              from "moment";
 
 /**
  * params = [
@@ -15,18 +16,27 @@ import { Storage }                              from '@ionic/storage';
  *      'endDate'
  * ] *
  */
+    
 @IonicPage()
 @Component({
     selector: 'page-order-list',
     templateUrl: 'order-list.html'
 })
 export class OrderListPage {
-    items:any;
-    params:any = {};
+    items:any;    
     page:number = 1;
     onPage:number = 5;
-    beginDate:any = '01.01.0001 0:00:00';
-    endDate:any = '01.01.0001 0:00:00';
+    beginDate:any = moment().startOf('day').format('DD.MM.YYYY HH:mm:ss');
+    endDate:any = moment().endOf('day').format('DD.MM.YYYY HH:mm:ss');
+    params:any = {
+        'method': 'requests',
+        'fulfilled': '0',
+        'master': 'user',
+        'page_number': this.page,
+        'on_page': this.onPage,
+        'beginDate': this.beginDate,
+        'endDate': this.endDate
+    };
     
     constructor(
         public navCtrl: NavController,
@@ -35,18 +45,9 @@ export class OrderListPage {
         public modalCtrl: ModalController,
         public loadingCtrl: LoadingController) {
 
-        this.params = {
-            'method': 'requests',
-            'fulfilled': '0',
-            'master': 'user',
-            'page_number': this.page,
-            'on_page': this.onPage,
-            'beginDate': this.beginDate,
-            'endDate': this.endDate
-        };
     }
 
-    ionViewDidLoad() {
+    ionViewDidLoad() {        
         this.presentLoading();
         this.storage.get('user').then(user => {
             console.log(user);
@@ -57,6 +58,7 @@ export class OrderListPage {
     }
 
     doInfinite(infiniteScroll){
+        this.presentLoading();
         setTimeout(() => {
             this.page++;
             this.params.page_number = this.page;

@@ -8,6 +8,7 @@ import { Api }                                  from "../../providers/api/api";
     selector: 'page-main',
     templateUrl: 'main.html'
 })
+
 export class MainPage {
     master: any;
     count: number;
