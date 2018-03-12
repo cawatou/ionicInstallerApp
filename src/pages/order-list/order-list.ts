@@ -10,7 +10,9 @@ import { Storage }                              from '@ionic/storage';
  *      'fulfilled',        // 1 - all , 0 - unfulfilled
  *      'master_name',
  *      'page_number',
- *      'on_page'
+ *      'on_page',
+ *      'beginDate',
+ *      'endDate'
  * ] *
  */
 @IonicPage()
@@ -20,7 +22,12 @@ import { Storage }                              from '@ionic/storage';
 })
 export class OrderListPage {
     items:any;
-
+    params:any = {};
+    page:number = 1;
+    onPage:number = 5;
+    beginDate:any = '01.01.0001 0:00:00';
+    endDate:any = '01.01.0001 0:00:00';
+    
     constructor(
         public navCtrl: NavController,
         public api: Api,
@@ -28,15 +35,41 @@ export class OrderListPage {
         public modalCtrl: ModalController,
         public loadingCtrl: LoadingController) {
 
+        this.params = {
+            'method': 'requests',
+            'fulfilled': '0',
+            'master': 'user',
+            'page_number': this.page,
+            'on_page': this.onPage,
+            'beginDate': this.beginDate,
+            'endDate': this.endDate
+        };
     }
 
     ionViewDidLoad() {
         this.presentLoading();
         this.storage.get('user').then(user => {
-            let params = ['requests', '0', user.Master, '1', '6'];
-            this.api.get(params)
+            console.log(user);
+            this.params.master = user.Master;
+            this.api.get(this.params)
                 .subscribe(data => this.items = data.json());
         });
+    }
+
+    doInfinite(infiniteScroll){
+        setTimeout(() => {
+            this.page++;
+            this.params.page_number = this.page;
+            this.api.get(this.params)
+                .subscribe(data => {
+                    let elements = data.json();
+                    for (let i = 0; i <= elements.length - 1; i++) {
+                        this.items.push(elements[i])
+                    }
+                });
+            
+            infiniteScroll.complete();
+        }, 2000);
     }
 
     openDetail(item) {

@@ -19,6 +19,7 @@ export class MainPage {
         private storage: Storage) {
         platform.ready().then(() => {
             this.storage.get('user').then(user => {
+                console.log(user);
                 this.master = user.Master;
 
                 let params;

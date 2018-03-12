@@ -12,27 +12,39 @@
             <div class="mm">Нет сообщений</div>
         </div>
     </div>
+
     <div class="anm w">
-        <div class="item item1" *ngFor="let item of items">
-            <div class="left" (click)="openDetail(item)">
-                <div class="t1">{{ item.Malfunctions }}</div>
-                <div class="t2">{{ item.Address }}</div>
-                <div class="t3"><i class="alarm"></i>
-                    <div><b>{{ item.RecommendDate }}</b> до рекомендуемого срока</div>
+        <ion-list>
+            <ion-item *ngFor="let item of items">
+                <div class="item item1">
+                    <div class="left" (click)="openDetail(item)">
+                        <div class="t1">{{ item.Malfunctions }}</div>
+                        <div class="t2">{{ item.Address }}</div>
+                        <div class="t3"><i class="alarm"></i>
+                            <div><b>{{ item.RecommendDate }}</b> до рекомендуемого срока</div>
+                        </div>
+                        <div class="icons">
+                            <div class="icon i1"></div>
+                            <div class="icon i2"></div>
+                            <div class="icon i3"></div>
+                            <div class="icon i4"></div>
+                        </div>
+                    </div>
+                    <div class="right" (click)="schedulerModal(item.ID)">
+                        <div class="number">№ {{ item.ID }}</div>
+                        <div class="icon i1"></div>
+                    </div>
                 </div>
-                <div class="icons">
-                    <div class="icon i1"></div>
-                    <div class="icon i2"></div>
-                    <div class="icon i3"></div>
-                    <div class="icon i4"></div>
-                </div>
-            </div>
-            <div class="right" (click)="schedulerModal(item.ID)">
-                <div class="number">№ {{ item.ID }}</div>
-                <div class="icon i1"></div>
-            </div>
-        </div>
+            </ion-item>
+        </ion-list>
     </div>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+                loadingSpinner="bubbles"
+                loadingText="Пожалуйста подождите">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
     <footer class="footer w">
         <div class="item" ion-item (click)="openPage('ProfilePage')">
