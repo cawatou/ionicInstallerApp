@@ -26,8 +26,12 @@ export class OrderListPage {
     items:any;    
     page:number = 1;
     onPage:number = 5;
+    active_tab:number = 1;
     beginDate:any = moment().startOf('day').format('DD.MM.YYYY HH:mm:ss');
     endDate:any = moment().endOf('day').format('DD.MM.YYYY HH:mm:ss');
+    day3:any = moment().subtract(3, 'd').format('DD.MM.YYYY HH:mm:ss');
+    day7:any = moment().subtract(7, 'd').format('DD.MM.YYYY HH:mm:ss');
+
     params:any = {
         'method': 'requests',
         'fulfilled': '0',
@@ -44,7 +48,8 @@ export class OrderListPage {
         private storage: Storage,
         public modalCtrl: ModalController,
         public loadingCtrl: LoadingController) {
-
+        
+        console.log(this.day3, this.day7);
     }
 
     ionViewDidLoad() {        
@@ -72,6 +77,14 @@ export class OrderListPage {
             
             infiniteScroll.complete();
         }, 2000);
+    }
+    
+    // date, active tab
+    getOrders(endDate, active){
+        this.active_tab = active;
+        this.params.beginDate = endDate;
+        this.api.get(this.params)
+            .subscribe(data => this.items = data.json());
     }
 
     openDetail(item) {

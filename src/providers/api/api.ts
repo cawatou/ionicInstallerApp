@@ -11,7 +11,7 @@ export class Api {
     }
 
     get(params?:any, options?:RequestOptions) {
-        this.url = 'http://192.168.88.55:84/DomofonAPI/hs/MastersAPI';
+        this.url = 'http://192.168.88.55:84/DomofonAPI/hs/MastersAPI'; 
         //this.url = 'http://79.173.100.11:84/DomofonAPI/hs/MastersAPI';
         if (!options) {
             options = new RequestOptions();

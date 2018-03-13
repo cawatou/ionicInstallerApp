@@ -3,9 +3,9 @@
         <div>Актуальные заявки</div>
     </div>
     <div class="anm-time w">
-        <a class="button active" href="#">сегодня</a>
-        <a class="button" href="#">3 дня</a>
-        <a class="button" href="#">неделя</a>
+        <a [class.active]="active_tab == 1" class="button" (click)="getOrders(beginDate, 1)">сегодня</a>
+        <a [class.active]="active_tab == 2" class="button" (click)="getOrders(day3, 2)">3 дня</a>
+        <a [class.active]="active_tab == 3" class="button" (click)="getOrders(day7, 3)">неделя</a>
     </div>
     <div class="messages w">
         <div class="no">
