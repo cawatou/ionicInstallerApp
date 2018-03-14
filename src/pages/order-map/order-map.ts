@@ -20,6 +20,7 @@ export class OrderMapPage {
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
     item: any = [];
+    //data:any = {};
 
     constructor(
         public navCtrl: NavController,
@@ -36,6 +37,7 @@ export class OrderMapPage {
     loadMap() {
         this.storage.get('item').then(data => {
             for(let key in data) this.item[key] = data[key];
+            
             this.api.getMapCoord(this.item.Address).subscribe(data => {
                 let res = data.json();
                 if(res.status == 'OK') {
@@ -75,6 +77,18 @@ export class OrderMapPage {
                 }
             });
         });
+    }
+
+    // return {command_id: "ID14726183", result: 1000}
+    sendSMS(){
+        let sms = {phone:'', text:''};
+        sms.phone = "89046153341";
+        sms.text = "Домофонный мастер приедет в течение часа";
+        this.api.sendSMS(sms).subscribe(data => {
+            if(data.json().result == 1000) console.log(1000);
+            
+            console.log(data);
+        })
     }
 
     openPage(page){
