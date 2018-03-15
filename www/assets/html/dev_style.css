@@ -6,3 +6,9 @@
 .aa4 {
     margin-bottom: 30px;
 }
+
+
+/*=========== HIDE (DAY & MONTH) SELECT ==============*/
+.datepicker-controls select {
+    display: none;
+}

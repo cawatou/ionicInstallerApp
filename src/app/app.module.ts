@@ -12,6 +12,7 @@ import {Api}                                      from '../providers/api/api';
 import {MyApp}                                    from './app.component';
 import {Settings}                                 from '../providers/settings/settings';
 import {Geolocation}                              from "@ionic-native/geolocation";
+import {DatePickerModule}                         from 'ionic3-datepicker';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -49,7 +50,8 @@ export function provideSettings(storage:Storage) {
             }
         }),
         IonicModule.forRoot(MyApp),
-        IonicStorageModule.forRoot()
+        IonicStorageModule.forRoot(),
+        DatePickerModule,
     ],
     bootstrap: [IonicApp],
     entryComponents: [

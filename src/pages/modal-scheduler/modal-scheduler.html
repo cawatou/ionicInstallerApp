@@ -4,25 +4,21 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <form (submit)="add_task()">
-        <div class="popup pop3" id="pop3">
-            <div class="w">
-                <ion-item>
-                    <ion-label>Начало выполнения</ion-label>
-                    <ion-datetime displayFormat="DD.MM" [(ngModel)]="task.date_begin" name="date_begin"></ion-datetime>
-                </ion-item>
-            </div>
+<ion-toolbar darkergraytoolbar
+             class="toolbarPlan">
 
-            <div class="w">
-                <ion-item>
-                    <ion-label>Конец выполнения</ion-label>
-                    <ion-datetime displayFormat="DD.MM" [(ngModel)]="task.date_end" name="date_end"></ion-datetime>
-                </ion-item>
-            </div>
+    <!--<ion   #dateTime [(ngModel)]="hiddenDate" [hidden]="true"></ion>-->
+  <span ion-datepicker
+        (ionChanged)="setDate($event);"
+        [max]="maxDate" [min]="initDate2"
+        [value]="initDate"
+        [showMaxAndMin]="true"
+        [disabledDates]="disabledDates"
+        [localeStrings]="{ monday:true, weekdays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'], months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'] }"
 
-            <ion-input type="hidden" [(ngModel)]="task.id" name="id"></ion-input>
-            <button class="button b3m w">Добавить</button>
-        </div>
-    </form>
-</ion-content>
+        clear
+        class="ScheduleDate">
+		<span>{{initDate | date}} <ion-icon name="clipboard" item-left></ion-icon> </span>
+	</span>
+
+</ion-toolbar>

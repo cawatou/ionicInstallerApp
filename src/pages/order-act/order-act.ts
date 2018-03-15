@@ -9,13 +9,14 @@ import { Storage }                     from '@ionic/storage';
     templateUrl: 'order-act.html'
 })
 export class OrderActPage {
-    item: any = [];
-    user: any;
+    public item: any = [];
+    public user: any;
 
     constructor(public navCtrl: NavController, private storage: Storage) {
         
     }
-    ionViewDidLoad() {
+    
+    public ionViewDidLoad() {
         this.storage.get('item').then(data => {    
             for(let key in data) this.item[key] = data[key]; 
         })
