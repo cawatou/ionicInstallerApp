@@ -32,6 +32,7 @@ export class Api {
         var text = data.text;
         this.url = 'http://ip.domofons.com/node_sms.php?phone=' + phone + '&code=' + text;
 
+        //this.options.headers.set('Content-Type', '');
         return this.http.get(this.url, this.options);
     }
 }

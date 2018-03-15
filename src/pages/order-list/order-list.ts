@@ -24,7 +24,6 @@ import * as moment                              from "moment";
 })
 export class OrderListPage {
     items:any;    
-    page:number = 1;
     onPage:number = 5;
     active_tab:number = 1;
     beginDate:any = moment().startOf('day').format('DD.MM.YYYY HH:mm:ss');
@@ -34,11 +33,11 @@ export class OrderListPage {
 
     params:any = {
         'method': 'requests',
-        'fulfilled': '0',
+        'fulfilled': 0,
         'master': 'user',
-        'page_number': this.page,
+        'page_number': 1,
         'on_page': this.onPage,
-        'beginDate': this.beginDate,
+        'beginDate': this.day7,
         'endDate': this.endDate
     };
     
@@ -54,37 +53,44 @@ export class OrderListPage {
 
     ionViewDidLoad() {        
         this.presentLoading();
-        this.storage.get('user').then(user => {
-            console.log(user);
+        this.storage.get('user').then(user => {            
             this.params.master = user.Master;
             this.api.get(this.params)
-                .subscribe(data => this.items = data.json());
+                .subscribe(data => {
+                    if(data.json().Error) this.items = [];
+                    else this.items = data.json();
+                });
         });
     }
 
     doInfinite(infiniteScroll){
+        console.log('scroll');        
         this.presentLoading();
         setTimeout(() => {
-            this.page++;
-            this.params.page_number = this.page;
+            this.params.page_number++;
             this.api.get(this.params)
                 .subscribe(data => {
-                    let elements = data.json();
+                    let elements = data.json();                   
                     for (let i = 0; i <= elements.length - 1; i++) {
                         this.items.push(elements[i])
-                    }
+                    }                                          
                 });
-            
+
             infiniteScroll.complete();
         }, 2000);
+             
     }
     
     // date, active tab
-    getOrders(endDate, active){
+    getOrders(beginDate, active){
         this.active_tab = active;
-        this.params.beginDate = endDate;
+        this.params.page_number = 1;
+        this.params.beginDate = beginDate;
         this.api.get(this.params)
-            .subscribe(data => this.items = data.json());
+            .subscribe(data => {
+                if(data.json().Error) this.items = [];
+                else this.items = data.json();
+            })
     }
 
     openDetail(item) {

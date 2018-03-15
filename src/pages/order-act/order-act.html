@@ -3,11 +3,9 @@
         <div>Электронный акт выполненных работ</div>
     </div>
     <div class="aa1 w">
-        <div class="text">Укладка ламината</div>
+        <div class="text">{{ item.Malfunctions }}</div>
         <div class="text2">
-            <p>Недорогой и относительно молодой тип напольного покрытия привлекает не только изобилием колоритных и
-                фактурных вариантов с точной имитацией рисунка благородной древесины, камня и даже кожи рептилий. Веским
-                аргументом в пользу приобретения ламинированного пола считают</p>
+            <p>{{ item.Comments }}</p>
         </div>
     </div>
     <div class="aae w">
@@ -35,7 +33,7 @@
         <div class="signature w">
             <div class="text"> Распишитесь пожалуйста на экране</div>
         </div>
-        <a class="button b3m w" (click)="openOrderList()">
+        <a class="button b3m w" href="#/order-list">
             Отправить
         </a>
     </div>
