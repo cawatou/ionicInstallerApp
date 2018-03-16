@@ -5,16 +5,18 @@
 </ion-header>
 
 <ion-content padding>
-    <form (submit)="remains_submit()">
+    <form>
         <div class="popup pop3" id="pop3">
             <div class="w">
                 <div class="select">
+                    <p>Наименование</p>
                     <select [(ngModel)]="select.remain_1" name="sremain_1">
                         <option *ngFor="let remain of remains" value="{{ remain.ID }}">{{ remain.Nomenclature }}</option>
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_1" name="iremain_1" value="0" type="number" />
+                    <p>Количество</p>
+                    <input [(ngModel)]="input.remain_1" name="iremain_1" value="0" type="number" min="0" />
                 </div>
             </div>
 
@@ -25,7 +27,7 @@
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_2" name="iremain_2" value="0" type="number" />
+                    <input [(ngModel)]="input.remain_2" name="iremain_2" value="0" type="number" min="0" />
                 </div>
             </div>
 
@@ -36,7 +38,7 @@
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_3" name="iremain_3" value="0" type="number" />
+                    <input [(ngModel)]="input.remain_3" name="iremain_3" value="0" type="number" min="0" />
                 </div>
             </div>
 
@@ -47,7 +49,7 @@
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_4" name="iremain_4" value="0" type="number" />
+                    <input [(ngModel)]="input.remain_4" name="iremain_4" value="0" type="number" min="0" />
                 </div>
             </div>
 
@@ -58,7 +60,7 @@
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_5" name="iremain_5" value="0" type="number" />
+                    <input [(ngModel)]="input.remain_5" name="iremain_5" value="0" type="number" min="0" />
                 </div>
             </div>
 
@@ -69,7 +71,7 @@
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_6" name="iremain_6" value="0" type="number" />
+                    <input [(ngModel)]="input.remain_6" name="iremain_6" value="0" type="number" min="0" />
                 </div>
             </div>
 
@@ -80,7 +82,7 @@
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_7" name="iremain_7" value="0" type="number" />
+                    <input [(ngModel)]="input.remain_7" name="iremain_7" value="0" type="number" min="0" />
                 </div>
             </div>
 
@@ -91,7 +93,7 @@
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_8" name="iremain_8" value="0" type="number" />
+                    <input [(ngModel)]="input.remain_8" name="iremain_8" value="0" type="number" min="0" />
                 </div>
             </div>
 
@@ -102,7 +104,7 @@
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_9" name="iremain_9" value="0" type="number" />
+                    <input [(ngModel)]="input.remain_9" name="iremain_9" value="0" type="number" min="0" />
                 </div>
             </div>
 
@@ -113,11 +115,15 @@
                     </select>
                 </div>
                 <div class="number-plus-minus">
-                    <input [(ngModel)]="input.remain_10" name="iremain_10" value="0" type="number" />
+                    <input [(ngModel)]="input.remain_10" name="iremain_10" value="0" type="number" min="0" />
                 </div>
             </div>
-
-            <button class="button b3m w">Подписать акт выполненных работ</button>
+            <div class="w">
+                <button (click)="remains_submit()" class="button b3m w">Подписать акт выполненных работ</button>
+            </div>
+            <div class="w">
+                <button (click)="closeModal()" class="button b3m w">Закрыть</button>
+            </div>
         </div>
     </form>
 </ion-content>

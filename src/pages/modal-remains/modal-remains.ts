@@ -50,6 +50,10 @@ export class ModalRemainsPage {
         });
         this.viewCtrl.dismiss();
         this.appCtrl.getRootNav().push('OrderActPage');
-        //this.navCtrl.push('OrderActPage');
+    }
+
+    closeModal() {
+        this.viewCtrl.dismiss();
+        //this.appCtrl.getRootNav().push('OrderConfirmPage');
     }
 }
