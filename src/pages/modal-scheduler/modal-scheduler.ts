@@ -1,10 +1,10 @@
-import { Component, ViewChild }                                         from '@angular/core';
-import { App, IonicPage, NavController, NavParams, ViewController }     from 'ionic-angular';
-import { Platform }                                                     from 'ionic-angular';
-import { Api }                                                          from '../../providers/api/api';
-import { Storage }                                                      from '@ionic/storage';
-import { DatePickerDirective }                                          from 'ionic3-datepicker';
-import * as moment                                                      from "moment";
+import { Component, ViewChild }                          from '@angular/core';
+import { App, IonicPage, NavParams, ViewController }     from 'ionic-angular';
+import { Platform }                                      from 'ionic-angular';
+import { Api }                                           from '../../providers/api/api';
+import { Storage }                                       from '@ionic/storage';
+import { DatePickerDirective }                           from 'ionic3-datepicker';
+import * as moment                                       from "moment";
 
 @IonicPage()
 @Component({
@@ -18,7 +18,7 @@ export class ModalSchedulerPage {
     public initDate: Date = new Date();
     public initDate2: Date = new Date(2015, 1, 1);
     public disabledDates: Date[] = [new Date(2017, 7, 14)];
-    public maxDate: Date = new Date(new Date().setDate(new Date().getDate() + 30));
+    public maxDate: Date = new Date(new Date().setDate(new Date().getDate() + 60));
     public min: Date = new Date();    
     
     public task:{ date_begin: string, date_end: string, id: string } = {
@@ -38,7 +38,7 @@ export class ModalSchedulerPage {
         private storage: Storage) {
 
         platform.ready().then(() => {
-            console.log('params.id: ', params.get('id'));
+            console.log('params.id: ', this.maxDate);
             this.task.id = params.get('id');
 
             this.storage.get('user').then(val => {

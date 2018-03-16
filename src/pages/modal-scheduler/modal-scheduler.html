@@ -4,21 +4,52 @@
     </ion-navbar>
 </ion-header>
 
-<ion-toolbar darkergraytoolbar
-             class="toolbarPlan">
+<ion-content padding>
+    <form (submit)="add_task()">
+        <div class="popup pop3" id="pop3">
+            <div class="w">
+                <ion-label>Начало выполнения</ion-label>
+                <ion-toolbar darkergraytoolbar class="toolbarPlan">
+                    <span ion-datepicker
+                          (ionChanged)="setDate($event);"
+                          [max]="maxDate" [min]="initDate2"
+                          [value]="initDate"
+                          [showMaxAndMin]="true"
+                          [disabledDates]="disabledDates"
+                          [localeStrings]="{ monday:true, weekdays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'], months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'] }"
 
-    <!--<ion   #dateTime [(ngModel)]="hiddenDate" [hidden]="true"></ion>-->
-  <span ion-datepicker
-        (ionChanged)="setDate($event);"
-        [max]="maxDate" [min]="initDate2"
-        [value]="initDate"
-        [showMaxAndMin]="true"
-        [disabledDates]="disabledDates"
-        [localeStrings]="{ monday:true, weekdays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'], months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'] }"
+                          clear
+                          class="ScheduleDate">
+                            <span>{{initDate | date}} <ion-icon name="clipboard" item-left></ion-icon> </span>
+                    </span>
+                </ion-toolbar>
+            </div>
 
-        clear
-        class="ScheduleDate">
-		<span>{{initDate | date}} <ion-icon name="clipboard" item-left></ion-icon> </span>
-	</span>
 
-</ion-toolbar>
+            <div class="w">
+                <ion-label>Конец выполнения</ion-label>
+                <ion-toolbar darkergraytoolbar class="toolbarPlan">
+                    <span ion-datepicker
+                          (ionChanged)="setDate($event);"
+                          [max]="maxDate" [min]="initDate2"
+                          [showMaxAndMin]="true"
+                          [disabledDates]="disabledDates"
+                          [localeStrings]="{ monday:true, weekdays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'], months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'] }"
+
+                          clear
+                          class="ScheduleDate">
+                            <span>{{initDate | date}} <ion-icon name="clipboard" item-left></ion-icon> </span>
+                    </span>
+                </ion-toolbar>
+            </div>
+            <!--<ion   #dateTime [(ngModel)]="hiddenDate" [hidden]="true"></ion>-->
+
+
+
+             <ion-input type="hidden" [(ngModel)]="task.id" name="id"></ion-input>
+            <button class="button b3m w">Добавить</button>
+        </div>
+    </form>
+</ion-content>
+
+
